@@ -77,9 +77,9 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
             <Search size={20} />
           </button>
           
-          <a href="tel:+19165550199" className={`${styles.phoneBtn} btn btn-primary`}>
+          <a href="tel:+19165399005" className={`${styles.phoneBtn} btn btn-primary`}>
             <Phone size={16} />
-            <span className={styles.phoneText}>+1 (916) 555-0199</span>
+            <span className={styles.phoneText}>+1 (916) 539-9005</span>
           </a>
 
           <button 
@@ -105,9 +105,9 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
               {link.label}
             </Link>
           ))}
-          <a href="tel:+19165550199" className={`${styles.mobilePhoneBtn} btn btn-primary`}>
+          <a href="tel:+19165399005" className={`${styles.mobilePhoneBtn} btn btn-primary`}>
             <Phone size={18} />
-            +1 (916) 555-0199
+            +1 (916) 539-9005
           </a>
           <div className={styles.mobileMeta}>
             <p>Sacramento & County, CA</p>

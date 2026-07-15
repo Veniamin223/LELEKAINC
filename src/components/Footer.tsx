@@ -71,7 +71,7 @@ export default function Footer() {
           <ul className={styles.contactList}>
             <li>
               <Phone size={18} className="text-orange" />
-              <a href="tel:+19165550199">+1 (916) 555-0199</a>
+              <a href="tel:+19165399005">+1 (916) 539-9005</a>
             </li>
             <li>
               <Mail size={18} className="text-orange" />

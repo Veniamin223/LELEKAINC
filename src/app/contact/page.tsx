@@ -109,7 +109,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <span className={styles.infoLabel}>Call or Text</span>
-                    <a href="tel:+19165550199" className={styles.infoVal}>+1 (916) 555-0199</a>
+                    <a href="tel:+19165399005" className={styles.infoVal}>+1 (916) 539-9005</a>
                   </div>
                 </li>
                 <li>
@@ -391,7 +391,7 @@ export default function Contact() {
                               name="phone"
                               value={formData.phone}
                               onChange={handleInputChange}
-                              placeholder="(916) 555-0199"
+                              placeholder="(916) 539-9005"
                             />
                           </div>
 

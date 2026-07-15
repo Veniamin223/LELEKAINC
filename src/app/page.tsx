@@ -461,8 +461,8 @@ export default function Home() {
               <Link href="/contact" className={`${styles.ctaPrimaryBtn} btn btn-secondary`}>
                 Contact Us Now
               </Link>
-              <a href="tel:+19165550199" className={styles.ctaPhone}>
-                +1 (916) 555-0199
+              <a href="tel:+19165399005" className={styles.ctaPhone}>
+                +1 (916) 539-9005
               </a>
             </div>
           </motion.div>
