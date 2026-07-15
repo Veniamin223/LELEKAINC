@@ -44,8 +44,8 @@
 .logoImg {
   object-fit: contain;
   transition: var(--transition-bounce);
-  max-width: 110px;
-  height: auto;
+  max-height: 28px;
+  width: auto;
 }
 
 .logo:hover .logoImg {

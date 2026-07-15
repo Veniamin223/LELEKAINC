@@ -26,9 +26,10 @@
   gap: 0.75rem;
 }
 
-.logoSvg {
-  width: 40px;
-  height: 40px;
+.logoImg {
+  object-fit: contain;
+  max-height: 36px;
+  width: auto;
 }
 
 .logoText {

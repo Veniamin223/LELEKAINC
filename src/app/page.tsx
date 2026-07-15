@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
@@ -104,6 +104,20 @@ const TESTIMONIALS = [
 
 export default function Home() {
   const [currentReview, setCurrentReview] = useState(0);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (videoRef.current) {
+      videoRef.current.muted = true;
+      // Force play
+      const playPromise = videoRef.current.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((err) => {
+          console.log("Autoplay blocked or failed:", err);
+        });
+      }
+    }
+  }, []);
 
   const nextReview = () => {
     setCurrentReview((prev) => (prev === TESTIMONIALS.length - 1 ? 0 : prev + 1));
@@ -129,6 +143,7 @@ export default function Home() {
       <section className={styles.hero}>
         {/* Full-width video background */}
         <video 
+          ref={videoRef}
           autoPlay 
           loop 
           muted 
