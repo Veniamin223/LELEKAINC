@@ -3,7 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Hammer, 
   Home as HomeIcon, 
@@ -102,11 +102,14 @@ const TESTIMONIALS = [
   }
 ];
 
+const ROTATING_WORDS = ['VISION', 'DREAMS', 'SPACES', 'HOMES', 'FUTURE'];
+
 export default function Home() {
   const [currentReview, setCurrentReview] = useState(0);
+  const [wordIndex, setWordIndex] = useState(0);
   const [activeVideo, setActiveVideo] = useState<'A' | 'B'>('A');
-  const [srcA, setSrcA] = useState('/hero-bg-3.mp4');
-  const [srcB, setSrcB] = useState('/hero-bg-4.mp4');
+  const [srcA, setSrcA] = useState('/hero-bg-4.mp4');
+  const [srcB, setSrcB] = useState('/hero-bg.mp4');
 
   const videoRefA = useRef<HTMLVideoElement>(null);
   const videoRefB = useRef<HTMLVideoElement>(null);
@@ -118,14 +121,22 @@ export default function Home() {
     activeVideoRef.current = activeVideo;
   }, [activeVideo]);
 
+  // Animate rotating word in Hero Title
   useEffect(() => {
-    // 5 dynamic scenes showing custom finished results and scale
+    const wordInterval = setInterval(() => {
+      setWordIndex((prev) => (prev + 1) % ROTATING_WORDS.length);
+    }, 2200);
+    return () => clearInterval(wordInterval);
+  }, []);
+
+  useEffect(() => {
+    // 5 dynamic finished result scenes (widescreen, bright, text-free)
     const HERO_SCENES = [
-      { src: '/hero-bg-3.mp4', start: 0 },
       { src: '/hero-bg-4.mp4', start: 0 },
-      { src: '/hero-bg-3.mp4', start: 8 },
       { src: '/hero-bg.mp4', start: 0 },
-      { src: '/hero-bg-3.mp4', start: 16 }
+      { src: '/hero-bg-5.mp4', start: 0 },
+      { src: '/hero-bg-4.mp4', start: 8 },
+      { src: '/hero-bg-4.mp4', start: 16 }
     ];
 
     // Initial play setup
@@ -229,7 +240,22 @@ export default function Home() {
           >
             <span className={styles.tagline}>California Licensed Contractor</span>
             <h1 className={styles.title}>
-              Building Your <span className="text-orange">Vision</span> <br />
+              Building Your <br />
+              <span className={styles.rotatingWordContainer}>
+                <AnimatePresence mode="wait">
+                  <motion.span
+                    key={ROTATING_WORDS[wordIndex]}
+                    initial={{ opacity: 0, y: 15 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -15 }}
+                    transition={{ duration: 0.4 }}
+                    className="text-orange"
+                    style={{ display: 'inline-block' }}
+                  >
+                    {ROTATING_WORDS[wordIndex]}
+                  </motion.span>
+                </AnimatePresence>
+              </span> <br />
               From The Ground Up
             </h1>
             <p className={styles.subtitle}>

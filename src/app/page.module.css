@@ -23,7 +23,7 @@
 }
 
 .videoActive {
-  opacity: 0.65; /* Brighter video presence */
+  opacity: 0.85; /* Bright widescreen loop */
 }
 
 .overlay {
@@ -34,9 +34,9 @@
   height: 100%;
   background: linear-gradient(
     to bottom,
-    rgba(11, 15, 23, 0.7) 0%,
-    rgba(11, 15, 23, 0.35) 50%,
-    rgba(11, 15, 23, 0.7) 100%
+    rgba(11, 15, 23, 0.4) 0%,
+    rgba(11, 15, 23, 0.15) 50%,
+    rgba(11, 15, 23, 0.4) 100%
   );
   z-index: 1;
   pointer-events: none;
@@ -58,6 +58,7 @@
   align-items: center;
   max-width: 850px;
   transform: translateY(-8rem); /* Position text block higher */
+  transition: transform 0.3s ease;
 }
 
 .tagline {
@@ -79,6 +80,14 @@
   margin-bottom: 2rem;
   text-transform: uppercase;
   letter-spacing: -0.02em;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.6);
+}
+
+.rotatingWordContainer {
+  display: inline-block;
+  min-width: 280px;
+  text-align: center;
+  position: relative;
 }
 
 .subtitle {
@@ -578,5 +587,11 @@
   }
   .reviewCard {
     padding: 2rem;
+  }
+  .heroContent {
+    transform: translateY(-2rem);
+  }
+  .rotatingWordContainer {
+    min-width: 180px;
   }
 }
