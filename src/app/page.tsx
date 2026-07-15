@@ -239,7 +239,7 @@ export default function Home() {
       <section className={styles.statsSection}>
         <div className="container">
           <motion.div 
-            className={styles.statsGrid}
+            className={styles.statsPanel}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
@@ -248,9 +248,9 @@ export default function Home() {
             {STATS.map((stat) => {
               const Icon = stat.icon;
               return (
-                <motion.div key={stat.id} className={styles.statCard} variants={fadeInUp}>
+                <motion.div key={stat.id} className={styles.statCol} variants={fadeInUp}>
                   <div className={styles.statIconWrapper}>
-                    <Icon size={24} className="text-orange" />
+                    <Icon size={24} />
                   </div>
                   <h3 className={styles.statValue}>{stat.val}</h3>
                   <p className={styles.statLabel}>{stat.label}</p>
