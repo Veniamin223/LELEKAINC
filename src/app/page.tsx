@@ -118,12 +118,34 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-      videoRef.current.play().catch((err) => {
-        console.log("Autoplay blocked or failed:", err);
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.playsInline = true;
+
+    const playVideo = () => {
+      video.play().catch((err) => {
+        console.log("Mobile autoplay triggered:", err);
       });
-    }
+    };
+
+    playVideo();
+
+    // Force play on first touch/click in case the mobile browser blocked it initially
+    const handleInteraction = () => {
+      playVideo();
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('click', handleInteraction);
+    };
+
+    window.addEventListener('touchstart', handleInteraction);
+    window.addEventListener('click', handleInteraction);
+
+    return () => {
+      window.removeEventListener('touchstart', handleInteraction);
+      window.removeEventListener('click', handleInteraction);
+    };
   }, []);
 
   const nextReview = () => {
@@ -152,6 +174,7 @@ export default function Home() {
         <video 
           ref={videoRef}
           src="/Construction_remodeling_cinematic_4K_202607151125.mp4"
+          poster="/projects/home_remodel.png"
           autoPlay 
           loop 
           muted 
