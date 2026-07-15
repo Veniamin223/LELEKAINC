@@ -20,7 +20,7 @@ import {
 import styles from './page.module.css';
 
 const STATS = [
-  { id: 1, val: '10+', label: 'Years Experience', icon: Award },
+  { id: 1, val: '10+', label: 'Years of Building Experience', icon: Award },
   { id: 2, val: '150+', label: 'Projects Completed', icon: CheckCircle },
   { id: 3, val: '100%', label: 'Happy Clients', icon: Star },
   { id: 4, val: '10+', label: 'Sacramento Cities', icon: Map }
