@@ -1,0 +1,417 @@
+.contactPage {
+  background-color: var(--bg-dark);
+  color: var(--text-light);
+}
+
+.banner {
+  background-color: #080B10;
+  border-bottom: 1px solid var(--border-dark);
+  padding: 6rem 0;
+  text-align: center;
+}
+
+.tagline {
+  font-family: var(--font-title);
+  color: var(--primary);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.bannerTitle {
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  color: #FFFFFF;
+  margin-bottom: 1.5rem;
+}
+
+.bannerSubtitle {
+  max-width: 650px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+}
+
+/* Layout */
+.contentSection {
+  padding: 5rem 0;
+}
+
+.gridContainer {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 4rem;
+  align-items: start;
+}
+
+/* Info Col */
+.infoCol {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.infoTitle {
+  font-size: 1.75rem;
+  color: #FFFFFF;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+}
+
+.infoList {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.infoList li {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.25rem;
+}
+
+.iconWrapper {
+  width: 44px;
+  height: 44px;
+  background-color: rgba(255, 90, 31, 0.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.infoLabel {
+  display: block;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-light-muted);
+  letter-spacing: 0.05em;
+  margin-bottom: 0.25rem;
+}
+
+.infoVal {
+  font-family: var(--font-title);
+  font-weight: 700;
+  font-size: 1.15rem;
+  color: #FFFFFF;
+}
+
+.infoList a:hover {
+  color: var(--primary);
+}
+
+/* Map Card */
+.mapCard {
+  padding: 2.5rem;
+}
+
+.mapTitle {
+  font-size: 1.25rem;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+
+.mapSubtitle {
+  color: var(--text-light-muted);
+  margin-bottom: 1.25rem;
+  font-size: 0.95rem;
+}
+
+.tagGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+}
+
+.mapTag {
+  background-color: rgba(255, 255, 255, 0.04);
+  border: 1px solid var(--border-dark);
+  font-size: 0.75rem;
+  font-family: var(--font-title);
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.vectorMap {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-dark);
+  margin-bottom: 1.5rem;
+}
+
+.mapSvg {
+  width: 100%;
+  display: block;
+}
+
+.pingAnim {
+  animation: ping 2s infinite ease-out;
+  transform-origin: 100px 75px;
+}
+
+@keyframes ping {
+  0% {
+    transform: scale(0.8);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+
+.mapFoot {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-light-muted);
+  font-weight: 500;
+}
+
+/* Form Card */
+.formCard {
+  padding: 3.5rem;
+}
+
+.stepsHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3.5rem;
+  position: relative;
+}
+
+.stepIndicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.stepNum {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #1a2333;
+  color: var(--text-light-muted);
+  border: 2px solid var(--border-dark);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-title);
+  font-weight: 800;
+  transition: var(--transition-smooth);
+}
+
+.stepLabel {
+  font-size: 0.75rem;
+  font-family: var(--font-title);
+  font-weight: 700;
+  text-transform: uppercase;
+  color: var(--text-light-muted);
+  letter-spacing: 0.05em;
+}
+
+.stepLine {
+  flex-grow: 1;
+  height: 2px;
+  background-color: var(--border-dark);
+  margin-top: -18px;
+  position: relative;
+  z-index: 1;
+}
+
+.stepActive .stepNum {
+  background-color: var(--primary);
+  border-color: var(--primary);
+  color: #FFFFFF;
+  box-shadow: 0 0 15px rgba(255, 90, 31, 0.4);
+}
+
+.stepActive .stepLabel {
+  color: #FFFFFF;
+}
+
+.formStepContent {
+  display: flex;
+  flex-direction: column;
+}
+
+.stepTitle {
+  font-size: 1.5rem;
+  color: #FFFFFF;
+  margin-bottom: 0.5rem;
+}
+
+.stepSubtitle {
+  margin-bottom: 2rem;
+}
+
+.optionGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 3rem;
+}
+
+.optionBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid var(--border-dark);
+  color: #FFFFFF;
+  padding: 1.25rem;
+  font-family: var(--font-title);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  transition: var(--transition-smooth);
+  text-align: left;
+}
+
+.optionBtn:hover {
+  border-color: rgba(255, 90, 31, 0.4);
+  background-color: rgba(255, 90, 31, 0.02);
+}
+
+.optionSelected {
+  background-color: var(--primary) !important;
+  border-color: var(--primary) !important;
+  color: #FFFFFF;
+  box-shadow: 0 5px 15px rgba(255, 90, 31, 0.2);
+}
+
+.formNav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--border-dark);
+  padding-top: 2rem;
+}
+
+.stepHelper {
+  font-size: 0.8rem;
+  color: var(--text-light-muted);
+}
+
+/* Inputs Details */
+.inputsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.inputField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.fullWidth {
+  grid-column: span 2;
+}
+
+.inputField label {
+  font-family: var(--font-title);
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  color: #FFFFFF;
+  letter-spacing: 0.05em;
+}
+
+.inputField input,
+.inputField textarea {
+  background-color: rgba(0, 0, 0, 0.2);
+  border: 1px solid var(--border-dark);
+  color: #FFFFFF;
+  padding: 1rem;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  outline: none;
+  transition: var(--transition-smooth);
+}
+
+.inputField input:focus,
+.inputField textarea:focus {
+  border-color: var(--primary);
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+.inputField textarea {
+  resize: vertical;
+}
+
+/* Success State */
+.successState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 2rem 0;
+}
+
+.successIcon {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.successTitle {
+  font-size: 2rem;
+  color: #FFFFFF;
+  margin-bottom: 1rem;
+}
+
+.successText {
+  color: var(--text-light-muted);
+  line-height: 1.6;
+  max-width: 500px;
+  margin-bottom: 2.5rem;
+}
+
+/* Responsiveness */
+@media (max-width: 1024px) {
+  .gridContainer {
+    grid-template-columns: 1fr;
+    gap: 3.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .mapCard {
+    padding: 1.5rem;
+  }
+  .formCard {
+    padding: 2rem 1.5rem;
+  }
+  .optionGrid {
+    grid-template-columns: 1fr;
+  }
+  .inputsGrid {
+    grid-template-columns: 1fr;
+  }
+  .fullWidth {
+    grid-column: span 1;
+  }
+  .stepsHeader {
+    margin-bottom: 2.5rem;
+  }
+}
