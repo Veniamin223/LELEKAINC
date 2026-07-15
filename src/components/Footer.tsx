@@ -37,7 +37,7 @@ export default function Footer() {
           </p>
           <div className={styles.license}>
             <Shield size={16} className="text-orange" />
-            <span>Licensed & Insured • CSLB #XXXXXXXX</span>
+            <span>Licensed & Insured • CSLB #1146118</span>
           </div>
         </div>
 
