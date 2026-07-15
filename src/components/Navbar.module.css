@@ -44,7 +44,7 @@
 .logoImg {
   object-fit: contain;
   transition: var(--transition-bounce);
-  max-width: 140px;
+  max-width: 110px;
   height: auto;
 }
 

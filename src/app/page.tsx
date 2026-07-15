@@ -135,7 +135,7 @@ export default function Home() {
           playsInline 
           className={styles.bgVideo}
         >
-          <source src="https://assets.mixkit.co/videos/preview/mixkit-construction-site-with-workers-41606-large.mp4" type="video/mp4" />
+          <source src="/hero-bg.mp4" type="video/mp4" />
         </video>
         
         {/* Cinematic dark overlay */}

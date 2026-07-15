@@ -43,8 +43,8 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
           <Image 
             src="/logo.png" 
             alt="Leleka Inc. Logo" 
-            width={160} 
-            height={40} 
+            width={120} 
+            height={30} 
             className={styles.logoImg}
             priority
           />
