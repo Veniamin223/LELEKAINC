@@ -18,7 +18,7 @@ export default function RootLayout({
     <html lang="en">
       <body>
         <Header />
-        <main style={{ marginTop: '80px' }}>
+        <main>
           {children}
         </main>
         <Footer />
