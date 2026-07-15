@@ -101,8 +101,9 @@
 }
 /* Stats Section */
 .statsSection {
-  background-color: #080B10;
-  border-y: 1px solid var(--border-dark);
+  background-color: #FFFFFF;
+  border-top: 1px solid var(--border-light);
+  border-bottom: 1px solid var(--border-light);
   padding: 4rem 0;
 }
 
@@ -133,7 +134,7 @@
 .statValue {
   font-size: 3rem;
   font-weight: 800;
-  color: #FFFFFF;
+  color: var(--text-dark);
   margin-bottom: 0.5rem;
 }
 
@@ -143,6 +144,7 @@
   text-transform: uppercase;
   font-size: 0.8rem;
   letter-spacing: 0.05em;
+  color: var(--text-dark-muted);
 }
 
 /* Services Preview */
