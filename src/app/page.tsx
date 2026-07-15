@@ -239,7 +239,7 @@ export default function Home() {
       <section className={styles.statsSection}>
         <div className="container">
           <motion.div 
-            className={styles.statsPanel}
+            className={styles.statsGrid}
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: '-100px' }}
