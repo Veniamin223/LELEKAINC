@@ -1,11 +1,11 @@
 .servicesPage {
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
 }
 
 .banner {
-  background-color: #080B10;
-  border-bottom: 1px solid var(--border-dark);
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--border-light);
   padding: 10rem 0 6rem 0;
   text-align: center;
 }
@@ -23,7 +23,7 @@
 
 .bannerTitle {
   font-size: clamp(2.5rem, 5vw, 4rem);
-  color: #FFFFFF;
+  color: #0B0F17;
   margin-bottom: 1.5rem;
 }
 
@@ -47,8 +47,8 @@
 }
 
 .serviceItem {
-  background-color: var(--bg-dark-card);
-  border: 1px solid var(--border-dark);
+  background-color: var(--bg-light-card);
+  border: 1px solid var(--border-light);
   transition: var(--transition-smooth);
 }
 
@@ -95,13 +95,13 @@
 .serviceTitle {
   font-size: 1.5rem;
   font-weight: 800;
-  color: #FFFFFF;
+  color: #0B0F17;
   line-height: 1.2;
 }
 
 .serviceSubtitle {
   font-size: 0.95rem;
-  color: var(--text-light-muted);
+  color: var(--text-dark-muted);
 }
 
 .toggleBtn {
@@ -130,7 +130,7 @@
 
 .detailsContent {
   padding: 0 2rem 2.5rem 2rem;
-  border-top: 1px solid var(--border-dark);
+  border-top: 1px solid var(--border-light);
 }
 
 .detailsGrid {
@@ -146,7 +146,7 @@
   text-transform: uppercase;
   font-size: 1rem;
   letter-spacing: 0.05em;
-  color: #FFFFFF;
+  color: #0B0F17;
   margin-bottom: 1.25rem;
   position: relative;
   padding-bottom: 0.5rem;
@@ -182,7 +182,7 @@
 
 .scopeList span {
   font-size: 0.95rem;
-  color: var(--text-light);
+  color: var(--text-dark);
 }
 
 /* FAQ Col */
@@ -193,8 +193,8 @@
 }
 
 .faqItem {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid var(--border-dark);
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid var(--border-light);
   padding: 1.25rem;
 }
 
@@ -215,7 +215,7 @@
 /* Details CTA */
 .detailsCta {
   margin-top: 3rem;
-  border-top: 1px solid var(--border-dark);
+  border-top: 1px solid var(--border-light);
   padding-top: 2rem;
   display: flex;
   justify-content: space-between;
@@ -227,14 +227,14 @@
 .detailsCta p {
   font-family: var(--font-title);
   font-weight: 700;
-  color: #FFFFFF;
+  color: #0B0F17;
   text-transform: uppercase;
   font-size: 0.95rem;
 }
 
 /* Trust Section */
 .trustSection {
-  background-color: var(--bg-dark);
+  background-color: var(--bg-light);
   padding-top: 0;
 }
 
@@ -247,7 +247,7 @@
 
 .trustTitle {
   font-size: 2rem;
-  color: #FFFFFF;
+  color: #0B0F17;
   margin-bottom: 1rem;
 }
 
@@ -283,7 +283,7 @@
   font-weight: 700;
   text-transform: uppercase;
   font-size: 0.8rem;
-  color: var(--text-light-muted);
+  color: var(--text-dark-muted);
   letter-spacing: 0.05em;
   margin-top: 0.25rem;
 }

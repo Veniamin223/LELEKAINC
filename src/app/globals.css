@@ -40,8 +40,8 @@ html, body {
   overflow-x: hidden;
   position: relative;
   font-family: var(--font-body);
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
 }
@@ -70,7 +70,7 @@ h1, h2, h3, h4, h5, h6 {
 p {
   line-height: 1.6;
   font-weight: 400;
-  color: var(--text-light-muted);
+  color: var(--text-dark-muted);
 }
 
 a {
@@ -128,13 +128,13 @@ a {
 
 .btn-secondary {
   background-color: transparent;
-  color: #FFFFFF;
-  border: 2px solid #FFFFFF;
+  color: var(--text-dark);
+  border: 2px solid var(--text-dark);
 }
 
 .btn-secondary:hover {
-  background-color: #FFFFFF;
-  color: var(--bg-dark);
+  background-color: var(--text-dark);
+  color: #FFFFFF;
   transform: translateY(-2px);
 }
 
@@ -157,11 +157,11 @@ a {
   }
 
   ::-webkit-scrollbar-track {
-    background: var(--bg-dark);
+    background: var(--bg-light);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #252D3D;
+    background: #D1D5DB;
     border-radius: 4px;
   }
 
@@ -183,8 +183,8 @@ section {
 
 /* Glassmorphism Classes */
 .glass {
-  background: rgba(22, 29, 43, 0.7);
+  background: rgba(255, 255, 255, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--border-dark);
+  border: 1px solid var(--border-light);
 }

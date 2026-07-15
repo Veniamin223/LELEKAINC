@@ -7,20 +7,20 @@
   max-width: 1280px;
   z-index: 100;
   transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-  background: rgba(11, 15, 23, 0.45);
+  background: rgba(255, 255, 255, 0.55);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(0, 0, 0, 0.08);
   border-radius: 9999px;
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
   padding: 0 2.5rem;
 }
 
 .scrolled {
   top: 0.75rem;
-  background: rgba(11, 15, 23, 0.75);
-  border-color: rgba(255, 90, 31, 0.45);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 90, 31, 0.1);
+  background: rgba(255, 255, 255, 0.85);
+  border-color: rgba(255, 90, 31, 0.3);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06), 0 0 15px rgba(255, 90, 31, 0.05);
 }
 
 .navContainer {
@@ -57,7 +57,7 @@
   font-weight: 900;
   font-size: 1.4rem;
   letter-spacing: 0.05em;
-  color: #FFFFFF;
+  color: #0B0F17;
 }
 
 /* Desktop Nav */
@@ -72,13 +72,13 @@
   text-transform: uppercase;
   font-size: 0.875rem;
   letter-spacing: 0.05em;
-  color: var(--text-light-muted);
+  color: var(--text-dark-muted);
   position: relative;
   padding: 0.5rem 0;
 }
 
 .navLink:hover {
-  color: #FFFFFF;
+  color: #0B0F17;
 }
 
 .navLink::after {
@@ -98,7 +98,7 @@
 }
 
 .activeLink {
-  color: #FFFFFF;
+  color: #0B0F17;
 }
 
 /* Controls */
@@ -111,7 +111,7 @@
 .iconBtn {
   background: transparent;
   border: none;
-  color: #FFFFFF;
+  color: #0B0F17;
   cursor: pointer;
   padding: 0.5rem;
   display: flex;
@@ -122,7 +122,7 @@
 }
 
 .iconBtn:hover {
-  background-color: rgba(255, 255, 255, 0.08);
+  background-color: rgba(0, 0, 0, 0.05);
   color: var(--primary);
 }
 
@@ -140,7 +140,7 @@
   display: none;
   background: transparent;
   border: none;
-  color: #FFFFFF;
+  color: #0B0F17;
   cursor: pointer;
   padding: 0.5rem;
 }
@@ -153,12 +153,12 @@
   width: 100%;
   max-width: 400px;
   height: 100vh;
-  background: var(--bg-dark);
-  border-left: 1px solid var(--border-dark);
+  background: var(--bg-light);
+  border-left: 1px solid var(--border-light);
   z-index: 99;
   padding: 120px 2rem 2rem 2rem;
   transition: cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.5);
+  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
 }
 
 .drawerOpen {
@@ -176,12 +176,12 @@
   font-weight: 800;
   font-size: 2rem;
   text-transform: uppercase;
-  color: var(--text-light-muted);
+  color: var(--text-dark-muted);
 }
 
 .mobileNavLink:hover,
 .activeMobileLink {
-  color: #FFFFFF;
+  color: #0B0F17;
   padding-left: 10px;
 }
 
@@ -194,7 +194,7 @@
 
 .mobileMeta {
   margin-top: auto;
-  border-top: 1px solid var(--border-dark);
+  border-top: 1px solid var(--border-light);
   padding-top: 2rem;
 }
 

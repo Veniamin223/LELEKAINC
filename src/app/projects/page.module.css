@@ -1,11 +1,11 @@
 .projectsPage {
-  background-color: var(--bg-dark);
-  color: var(--text-light);
+  background-color: var(--bg-light);
+  color: var(--text-dark);
 }
 
 .banner {
-  background-color: #080B10;
-  border-bottom: 1px solid var(--border-dark);
+  background-color: #FFFFFF;
+  border-bottom: 1px solid var(--border-light);
   padding: 10rem 0 6rem 0;
   text-align: center;
 }
@@ -23,7 +23,7 @@
 
 .bannerTitle {
   font-size: clamp(2.5rem, 5vw, 4rem);
-  color: #FFFFFF;
+  color: #0B0F17;
   margin-bottom: 1.5rem;
 }
 
@@ -54,9 +54,9 @@
 }
 
 .filterBtn {
-  background-color: var(--bg-dark-card);
-  border: 1px solid var(--border-dark);
-  color: var(--text-light-muted);
+  background-color: var(--bg-light-card);
+  border: 1px solid var(--border-light);
+  color: var(--text-dark-muted);
   font-family: var(--font-title);
   font-weight: 700;
   text-transform: uppercase;
@@ -69,7 +69,7 @@
 
 .filterBtn:hover {
   border-color: var(--primary);
-  color: #FFFFFF;
+  color: var(--primary);
 }
 
 .activeFilter {
@@ -81,8 +81,8 @@
 .searchBox {
   display: flex;
   align-items: center;
-  background-color: var(--bg-dark-card);
-  border: 1px solid var(--border-dark);
+  background-color: var(--bg-light-card);
+  border: 1px solid var(--border-light);
   padding: 0.75rem 1.25rem;
   width: 100%;
   max-width: 380px;
@@ -94,13 +94,13 @@
 }
 
 .searchIcon {
-  color: var(--text-light-muted);
+  color: var(--text-dark-muted);
 }
 
 .searchInput {
   background: transparent;
   border: none;
-  color: #FFFFFF;
+  color: var(--text-dark);
   font-family: var(--font-body);
   outline: none;
   font-size: 0.95rem;
@@ -108,13 +108,13 @@
 }
 
 .searchInput::placeholder {
-  color: var(--text-light-muted);
+  color: var(--text-dark-muted);
 }
 
 .clearBtn {
   background: transparent;
   border: none;
-  color: var(--text-light-muted);
+  color: var(--text-dark-muted);
   cursor: pointer;
   display: flex;
   align-items: center;
@@ -122,7 +122,7 @@
 }
 
 .clearBtn:hover {
-  color: #FFFFFF;
+  color: var(--primary);
 }
 
 /* Grid */
@@ -133,8 +133,8 @@
 }
 
 .projectCard {
-  background-color: var(--bg-dark-card);
-  border: 1px solid var(--border-dark);
+  background-color: var(--bg-light-card);
+  border: 1px solid var(--border-light);
   cursor: pointer;
   transition: var(--transition-smooth);
 }
@@ -142,6 +142,7 @@
 .projectCard:hover {
   transform: translateY(-5px);
   border-color: rgba(255, 90, 31, 0.4);
+  box-shadow: var(--shadow-lg);
 }
 
 .cardImgWrapper {
@@ -215,12 +216,12 @@
   align-items: center;
   gap: 0.25rem;
   font-size: 0.85rem;
-  color: var(--text-light-muted);
+  color: var(--text-dark-muted);
 }
 
 .cardTitle {
   font-size: 1.35rem;
-  color: #FFFFFF;
+  color: #0B0F17;
   margin-bottom: 0.75rem;
 }
 
@@ -250,9 +251,9 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background-color: rgba(6, 8, 12, 0.9);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background-color: rgba(6, 8, 12, 0.5);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   z-index: 1000;
   display: flex;
   justify-content: center;
@@ -263,20 +264,21 @@
 .modalCard {
   width: 100%;
   max-width: 960px;
-  background-color: var(--bg-dark-card);
-  border: 1px solid var(--border-dark);
+  background-color: var(--bg-light-card);
+  border: 1px solid var(--border-light);
   position: relative;
   max-height: 90vh;
   overflow-y: auto;
+  box-shadow: var(--shadow-xl);
 }
 
 .modalCloseBtn {
   position: absolute;
   top: 1.5rem;
   right: 1.5rem;
-  background: rgba(0, 0, 0, 0.5);
-  border: 1px solid var(--border-dark);
-  color: #FFFFFF;
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--border-light);
+  color: #0B0F17;
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -291,6 +293,7 @@
 .modalCloseBtn:hover {
   background: var(--primary);
   border-color: var(--primary);
+  color: #FFFFFF;
 }
 
 .modalGrid {
@@ -331,7 +334,7 @@
 
 .modalTitle {
   font-size: 2.25rem;
-  color: #FFFFFF;
+  color: #0B0F17;
   margin-bottom: 0.5rem;
 }
 
@@ -339,7 +342,7 @@
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  color: var(--text-light-muted);
+  color: var(--text-dark-muted);
   font-size: 0.95rem;
   margin-bottom: 2rem;
 }
@@ -350,7 +353,7 @@
 }
 
 .modalSpecs {
-  border-top: 1px solid var(--border-dark);
+  border-top: 1px solid var(--border-light);
   padding-top: 2rem;
   margin-bottom: 2.5rem;
 }
@@ -361,7 +364,7 @@
   text-transform: uppercase;
   font-size: 0.95rem;
   letter-spacing: 0.05em;
-  color: #FFFFFF;
+  color: #0B0F17;
   margin-bottom: 1.25rem;
 }
 
@@ -381,14 +384,14 @@
 .specLabel {
   font-size: 0.75rem;
   text-transform: uppercase;
-  color: var(--text-light-muted);
+  color: var(--text-dark-muted);
   display: block;
 }
 
 .specVal {
   font-family: var(--font-title);
   font-weight: 700;
-  color: #FFFFFF;
+  color: #0B0F17;
   font-size: 1.05rem;
 }
 
@@ -399,7 +402,7 @@
 .featuresTitle {
   font-size: 0.85rem;
   font-weight: 700;
-  color: var(--text-light-muted);
+  color: var(--text-dark-muted);
   display: block;
   margin-bottom: 0.75rem;
 }
