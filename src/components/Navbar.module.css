@@ -149,7 +149,9 @@
 .mobileDrawer {
   position: fixed;
   top: 0;
-  right: -100%;
+  right: 0;
+  transform: translateX(100%);
+  visibility: hidden;
   width: 100%;
   max-width: 400px;
   height: 100vh;
@@ -157,12 +159,14 @@
   border-left: 1px solid var(--border-light);
   z-index: 99;
   padding: 120px 2rem 2rem 2rem;
-  transition: cubic-bezier(0.77, 0, 0.175, 1) 0.5s;
+  transition: transform 0.5s cubic-bezier(0.77, 0, 0.175, 1),
+              visibility 0.5s cubic-bezier(0.77, 0, 0.175, 1);
   box-shadow: -10px 0 30px rgba(0, 0, 0, 0.05);
 }
 
 .drawerOpen {
-  right: 0;
+  transform: translateX(0);
+  visibility: visible;
 }
 
 .mobileNav {
