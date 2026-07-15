@@ -108,6 +108,7 @@ export default function Home() {
   const [currentReview, setCurrentReview] = useState(0);
   const [wordIndex, setWordIndex] = useState(0);
   const videoRef = useRef<HTMLVideoElement>(null);
+  const showcaseVideoRef = useRef<HTMLVideoElement>(null);
 
   // Animate rotating word in Hero Title
   useEffect(() => {
@@ -119,22 +120,28 @@ export default function Home() {
 
   useEffect(() => {
     const video = videoRef.current;
+    const showcaseVideo = showcaseVideoRef.current;
     if (!video) return;
 
     video.muted = true;
     video.playsInline = true;
+    if (showcaseVideo) {
+      showcaseVideo.muted = true;
+      showcaseVideo.playsInline = true;
+    }
 
-    const playVideo = () => {
-      video.play().catch((err) => {
-        console.log("Mobile autoplay triggered:", err);
-      });
+    const playVideos = () => {
+      video.play().catch(() => {});
+      if (showcaseVideo) {
+        showcaseVideo.play().catch(() => {});
+      }
     };
 
-    playVideo();
+    playVideos();
 
     // Force play on first touch/click in case the mobile browser blocked it initially
     const handleInteraction = () => {
-      playVideo();
+      playVideos();
       window.removeEventListener('touchstart', handleInteraction);
       window.removeEventListener('click', handleInteraction);
     };
@@ -173,7 +180,7 @@ export default function Home() {
         {/* Full-width cinematic background video */}
         <video 
           ref={videoRef}
-          src="/Construction_time-lapse_and_reveal_4K_202607151151.mp4"
+          src="/Construction_remodeling_cinematic_4K_202607151125.mp4"
           poster="/projects/home_remodel.png"
           autoPlay 
           loop 
@@ -250,6 +257,40 @@ export default function Home() {
                 </motion.div>
               );
             })}
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Video Showcase Section */}
+      <section className={styles.videoShowcaseSection}>
+        <div className="container">
+          <div className={styles.sectionHeader}>
+            <span className={styles.preTitle}>Craftsmanship in Motion</span>
+            <h2 className={styles.sectionTitle}>Our Process In Action</h2>
+            <p className={styles.sectionSubtitle}>
+              Watch a time-lapse of our custom builds coming to life. From ground-breaking foundation pouring to luxury finished handovers.
+            </p>
+          </div>
+          <motion.div 
+            className={styles.videoPlayerContainer}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: '-100px' }}
+            variants={fadeInUp}
+          >
+            <div className={styles.videoFrame}>
+              <video 
+                ref={showcaseVideoRef}
+                src="/Construction_time-lapse_and_reveal_4K_202607151151.mp4"
+                poster="/projects/adu_addition.png"
+                autoPlay 
+                loop 
+                muted 
+                playsInline 
+                controls
+                className={styles.showcaseVideo}
+              />
+            </div>
           </motion.div>
         </div>
       </section>
