@@ -101,10 +101,12 @@
 }
 /* Stats Section */
 .statsSection {
-  background-color: #F8FAFC;
+  background-color: #080B10;
   padding: 2.5rem 0;
   position: relative;
   overflow: hidden;
+  border-top: 1px solid var(--border-dark);
+  border-bottom: 1px solid var(--border-dark);
 }
 
 .statsSection::before {
@@ -115,7 +117,7 @@
   transform: translate(-50%, -50%);
   width: 600px;
   height: 600px;
-  background: radial-gradient(circle, rgba(255, 90, 31, 0.03) 0%, transparent 75%);
+  background: radial-gradient(circle, rgba(255, 90, 31, 0.05) 0%, transparent 75%);
   z-index: 0;
   pointer-events: none;
 }
@@ -123,15 +125,14 @@
 .statsPanel {
   position: relative;
   z-index: 1;
-  background: rgba(255, 255, 255, 0.85);
+  background: rgba(22, 29, 43, 0.4);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
-  border: 1px solid rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 24px;
   box-shadow: 
-    0 15px 35px -5px rgba(15, 23, 42, 0.03),
-    0 5px 15px -5px rgba(15, 23, 42, 0.01),
-    0 0 1px rgba(15, 23, 42, 0.08);
+    0 20px 40px rgba(0, 0, 0, 0.3),
+    0 1px 3px rgba(0, 0, 0, 0.1);
   padding: 2rem 1.5rem;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -150,7 +151,7 @@
 }
 
 .statCol:not(:last-child) {
-  border-right: 1px solid rgba(0, 0, 0, 0.05);
+  border-right: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 .statIconWrapper {
@@ -170,7 +171,7 @@
   font-family: var(--font-title);
   font-size: clamp(2rem, 3vw, 2.5rem);
   font-weight: 800;
-  color: #0B0F17;
+  color: #FFFFFF;
   margin-bottom: 0.25rem;
   line-height: 1.1;
   letter-spacing: -0.02em;
@@ -187,7 +188,7 @@
   text-transform: uppercase;
   font-size: 0.72rem;
   letter-spacing: 0.12em;
-  color: #6B7280;
+  color: var(--text-light-muted);
 }
 
 /* Hover Accent Bar */
@@ -628,7 +629,7 @@
     border-right: none;
   }
   .statCol:nth-child(odd) {
-    border-right: 1px solid rgba(0, 0, 0, 0.06);
+    border-right: 1px solid rgba(255, 255, 255, 0.06);
   }
   .servicesGrid {
     grid-template-columns: 1fr;
@@ -661,7 +662,7 @@
     border-right: none;
   }
   .statCol:not(:last-child) {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
     padding-bottom: 2rem;
   }
   .statCol::after {
