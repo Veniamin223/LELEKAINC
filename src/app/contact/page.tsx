@@ -73,11 +73,35 @@ export default function Contact() {
 
     setSubmitting(true);
     
-    // Simulate API request
-    await new Promise((resolve) => setTimeout(resolve, 1500));
-    
-    setSubmitting(false);
-    setSubmitted(true);
+    try {
+      const response = await fetch('/api/send', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          city: formData.city,
+          projectType,
+          budget,
+          message: formData.message
+        })
+      });
+
+      const data = await response.json();
+      if (response.ok && data.success) {
+        setSubmitted(true);
+      } else {
+        alert(data.error || 'Failed to submit request. Please try again.');
+      }
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      alert('An unexpected error occurred. Please try again later.');
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
