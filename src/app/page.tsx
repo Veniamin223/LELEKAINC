@@ -173,7 +173,7 @@ export default function Home() {
         {/* Full-width cinematic background video */}
         <video 
           ref={videoRef}
-          src="/Construction_remodeling_cinematic_4K_202607151125.mp4"
+          src="/Construction_time-lapse_and_reveal_4K_202607151151.mp4"
           poster="/projects/home_remodel.png"
           autoPlay 
           loop 
