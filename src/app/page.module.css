@@ -57,7 +57,7 @@
   flex-direction: column;
   align-items: center;
   max-width: 850px;
-  transform: translateY(-8rem); /* Position text block higher */
+  transform: translateY(-13rem); /* Position text block higher */
   transition: transform 0.3s ease;
 }
 
@@ -589,7 +589,7 @@
     padding: 2rem;
   }
   .heroContent {
-    transform: translateY(-2rem);
+    transform: translateY(-5rem);
   }
   .rotatingWordContainer {
     min-width: 180px;
