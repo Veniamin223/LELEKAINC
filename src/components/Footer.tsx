@@ -2,6 +2,7 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { Mail, Phone, MapPin, Shield, ArrowUp } from 'lucide-react';
 import styles from './Footer.module.css';
 
@@ -18,14 +19,13 @@ export default function Footer() {
         {/* Company Pitch */}
         <div className={styles.columnBrand}>
           <Link href="/" className={styles.logo}>
-            <svg viewBox="0 0 100 100" className={styles.logoSvg}>
-              <path d="M20 80 L50 20 L80 80 M50 20 L50 80" stroke="var(--primary)" strokeWidth="6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M35 50 L50 35 L65 50" stroke="#FFFFFF" strokeWidth="6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-              <circle cx="50" cy="20" r="4" fill="var(--primary)" />
-            </svg>
-            <span className={styles.logoText}>
-              LELEKA<span className="text-orange">INC</span>
-            </span>
+            <Image 
+              src="/logo.png" 
+              alt="Leleka Inc. Logo" 
+              width={160} 
+              height={40} 
+              className={styles.logoImg}
+            />
           </Link>
           <p className={styles.description}>
             Delivering high-performance, modern construction and remodeling solutions. 

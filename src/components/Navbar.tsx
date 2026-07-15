@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { Menu, X, Search, Phone } from 'lucide-react';
 import styles from './Navbar.module.css';
@@ -27,7 +28,6 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-
   const navLinks = [
     { label: 'Home', path: '/' },
     { label: 'Services', path: '/services' },
@@ -40,15 +40,14 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
       <div className={`${styles.navContainer} container`}>
         {/* Logo */}
         <Link href="/" className={styles.logo}>
-          <svg viewBox="0 0 100 100" className={styles.logoSvg}>
-            {/* Geometric stylized stork/crane bird taking off, representing Leleka (Stork) & builder's crane */}
-            <path d="M20 80 L50 20 L80 80 M50 20 L50 80" stroke="var(--primary)" strokeWidth="6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-            <path d="M35 50 L50 35 L65 50" stroke="#FFFFFF" strokeWidth="6" fill="none" strokeLinecap="round" strokeLinejoin="round" />
-            <circle cx="50" cy="20" r="4" fill="var(--primary)" />
-          </svg>
-          <span className={styles.logoText}>
-            LELEKA<span className="text-orange">INC</span>
-          </span>
+          <Image 
+            src="/logo.png" 
+            alt="Leleka Inc. Logo" 
+            width={160} 
+            height={40} 
+            className={styles.logoImg}
+            priority
+          />
         </Link>
 
         {/* Desktop Nav */}

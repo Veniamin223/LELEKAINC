@@ -127,18 +127,31 @@ export default function Home() {
     <div>
       {/* Hero Section */}
       <section className={styles.hero}>
+        {/* Full-width video background */}
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className={styles.bgVideo}
+        >
+          <source src="https://assets.mixkit.co/videos/preview/mixkit-construction-site-with-workers-41606-large.mp4" type="video/mp4" />
+        </video>
+        
+        {/* Cinematic dark overlay */}
+        <div className={styles.overlay} />
+
         <div className={`${styles.heroContainer} container`}>
           <motion.div 
-            className={styles.heroText}
+            className={styles.heroContent}
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
           >
             <span className={styles.tagline}>California Licensed Contractor</span>
             <h1 className={styles.title}>
-              Building Your <br />
-              <span className="text-orange">Vision</span> From The <br />
-              Ground Up
+              Building Your <span className="text-orange">Vision</span> <br />
+              From The Ground Up
             </h1>
             <p className={styles.subtitle}>
               Premium custom home builds, Accessory Dwelling Units (ADUs), and full remodeling services. 
@@ -151,32 +164,6 @@ export default function Home() {
               <Link href="/projects" className="btn btn-secondary">
                 View Our Work
               </Link>
-            </div>
-          </motion.div>
-
-          <motion.div 
-            className={styles.heroVisual}
-            initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-          >
-            <div className={styles.imageWrapper}>
-              <Image 
-                src="/projects/kitchen_remodel.png" 
-                alt="Modern Leleka Inc. Kitchen Renovation"
-                fill
-                priority
-                className={styles.heroImage}
-              />
-              <div className={styles.glassBadge}>
-                <div className={styles.badgeIcon}>
-                  <TrendingUp size={20} className="text-orange" />
-                </div>
-                <div>
-                  <h4 className={styles.badgeTitle}>Top Sacramento Contractor</h4>
-                  <p className={styles.badgeText}>Rated 5.0 stars on Google Reviews</p>
-                </div>
-              </div>
             </div>
           </motion.div>
         </div>
