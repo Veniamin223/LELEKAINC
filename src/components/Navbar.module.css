@@ -18,35 +18,9 @@
 
 .scrolled {
   top: 0.75rem;
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(255, 90, 31, 0.25);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08), 0 0 15px rgba(255, 90, 31, 0.05);
-}
-
-/* Scrolled Adapters (Frosted Light Mode) */
-.scrolled .logoText {
-  color: #0B0F17;
-}
-
-.scrolled .navLink {
-  color: #4B5563;
-}
-
-.scrolled .navLink:hover {
-  color: var(--primary);
-}
-
-.scrolled .activeLink {
-  color: var(--primary);
-}
-
-.scrolled .iconBtn,
-.scrolled .hamburger {
-  color: #0B0F17;
-}
-
-.scrolled .iconBtn:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background: rgba(11, 15, 23, 0.75);
+  border-color: rgba(255, 90, 31, 0.45);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4), 0 0 15px rgba(255, 90, 31, 0.1);
 }
 
 .navContainer {
