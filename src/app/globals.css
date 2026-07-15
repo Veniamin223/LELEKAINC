@@ -150,22 +150,24 @@ a {
   transform: translateY(-2px);
 }
 
-/* Custom Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-}
+/* Custom Scrollbar for Desktop Only */
+@media (min-width: 1024px) {
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
 
-::-webkit-scrollbar-track {
-  background: var(--bg-dark);
-}
+  ::-webkit-scrollbar-track {
+    background: var(--bg-dark);
+  }
 
-::-webkit-scrollbar-thumb {
-  background: #252D3D;
-  border-radius: 4px;
-}
+  ::-webkit-scrollbar-thumb {
+    background: #252D3D;
+    border-radius: 4px;
+  }
 
-::-webkit-scrollbar-thumb:hover {
-  background: var(--primary);
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--primary);
+  }
 }
 
 /* Section Spacing */
