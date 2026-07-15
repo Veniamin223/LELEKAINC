@@ -104,19 +104,75 @@ const TESTIMONIALS = [
 
 export default function Home() {
   const [currentReview, setCurrentReview] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
+  const [activeVideo, setActiveVideo] = useState<'A' | 'B'>('A');
+  const [srcA, setSrcA] = useState('/hero-bg-2.mp4');
+  const [srcB, setSrcB] = useState('/hero-bg.mp4');
+
+  const videoRefA = useRef<HTMLVideoElement>(null);
+  const videoRefB = useRef<HTMLVideoElement>(null);
+  const activeVideoRef = useRef<'A' | 'B'>('A');
+  const sceneIndexRef = useRef(0);
+
+  // Sync ref to avoid closing over stale state in interval
+  useEffect(() => {
+    activeVideoRef.current = activeVideo;
+  }, [activeVideo]);
 
   useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.muted = true;
-      // Force play
-      const playPromise = videoRef.current.play();
-      if (playPromise !== undefined) {
-        playPromise.catch((err) => {
-          console.log("Autoplay blocked or failed:", err);
-        });
-      }
+    // 5 dynamic scenes showing construction work and finished interior
+    const HERO_SCENES = [
+      { src: '/hero-bg-2.mp4', start: 0 },
+      { src: '/hero-bg.mp4', start: 0 },
+      { src: '/hero-bg-2.mp4', start: 8 },
+      { src: '/hero-bg-2.mp4', start: 16 },
+      { src: '/hero-bg-2.mp4', start: 24 }
+    ];
+
+    // Initial play setup
+    if (videoRefA.current) {
+      videoRefA.current.currentTime = HERO_SCENES[0].start;
+      videoRefA.current.muted = true;
+      videoRefA.current.play().catch(() => {});
     }
+
+    const interval = setInterval(() => {
+      const nextIndex = (sceneIndexRef.current + 1) % HERO_SCENES.length;
+      sceneIndexRef.current = nextIndex;
+      const nextScene = HERO_SCENES[nextIndex];
+      const currentActive = activeVideoRef.current;
+
+      if (currentActive === 'A') {
+        setSrcB(nextScene.src);
+        const vidB = videoRefB.current;
+        if (vidB) {
+          vidB.currentTime = nextScene.start;
+          vidB.muted = true;
+          vidB.play().then(() => {
+            setActiveVideo('B');
+          }).catch(() => {
+            setActiveVideo('B');
+          });
+        } else {
+          setActiveVideo('B');
+        }
+      } else {
+        setSrcA(nextScene.src);
+        const vidA = videoRefA.current;
+        if (vidA) {
+          vidA.currentTime = nextScene.start;
+          vidA.muted = true;
+          vidA.play().then(() => {
+            setActiveVideo('A');
+          }).catch(() => {
+            setActiveVideo('A');
+          });
+        } else {
+          setActiveVideo('A');
+        }
+      }
+    }, 3000); // Transitions every 3 seconds
+
+    return () => clearInterval(interval);
   }, []);
 
   const nextReview = () => {
@@ -141,17 +197,25 @@ export default function Home() {
     <div>
       {/* Hero Section */}
       <section className={styles.hero}>
-        {/* Full-width video background */}
+        {/* Full-width double-buffered video backgrounds */}
         <video 
-          ref={videoRef}
+          ref={videoRefA}
+          src={srcA}
           autoPlay 
           loop 
           muted 
           playsInline 
-          className={styles.bgVideo}
-        >
-          <source src="/hero-bg.mp4" type="video/mp4" />
-        </video>
+          className={`${styles.bgVideo} ${activeVideo === 'A' ? styles.videoActive : ''}`}
+        />
+        <video 
+          ref={videoRefB}
+          src={srcB}
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className={`${styles.bgVideo} ${activeVideo === 'B' ? styles.videoActive : ''}`}
+        />
         
         {/* Cinematic dark overlay */}
         <div className={styles.overlay} />
