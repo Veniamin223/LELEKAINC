@@ -105,8 +105,8 @@ const TESTIMONIALS = [
 export default function Home() {
   const [currentReview, setCurrentReview] = useState(0);
   const [activeVideo, setActiveVideo] = useState<'A' | 'B'>('A');
-  const [srcA, setSrcA] = useState('/hero-bg-2.mp4');
-  const [srcB, setSrcB] = useState('/hero-bg.mp4');
+  const [srcA, setSrcA] = useState('/hero-bg-3.mp4');
+  const [srcB, setSrcB] = useState('/hero-bg-4.mp4');
 
   const videoRefA = useRef<HTMLVideoElement>(null);
   const videoRefB = useRef<HTMLVideoElement>(null);
@@ -119,13 +119,13 @@ export default function Home() {
   }, [activeVideo]);
 
   useEffect(() => {
-    // 5 dynamic scenes showing construction work and finished interior
+    // 5 dynamic scenes showing custom finished results and scale
     const HERO_SCENES = [
-      { src: '/hero-bg-2.mp4', start: 0 },
+      { src: '/hero-bg-3.mp4', start: 0 },
+      { src: '/hero-bg-4.mp4', start: 0 },
+      { src: '/hero-bg-3.mp4', start: 8 },
       { src: '/hero-bg.mp4', start: 0 },
-      { src: '/hero-bg-2.mp4', start: 8 },
-      { src: '/hero-bg-2.mp4', start: 16 },
-      { src: '/hero-bg-2.mp4', start: 24 }
+      { src: '/hero-bg-3.mp4', start: 16 }
     ];
 
     // Initial play setup

@@ -43,11 +43,14 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
           <Image 
             src="/logo.png" 
             alt="Leleka Inc. Logo" 
-            width={180} 
-            height={45} 
+            width={40} 
+            height={40} 
             className={styles.logoImg}
             priority
           />
+          <span className={styles.logoText}>
+            LELEKA<span className="text-orange">INC</span>
+          </span>
         </Link>
 
         {/* Desktop Nav */}

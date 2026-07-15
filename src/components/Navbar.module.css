@@ -35,21 +35,29 @@
   height: 70px;
 }
 
-/* Logo */
 .logo {
   display: flex;
   align-items: center;
+  gap: 0.75rem;
 }
 
 .logoImg {
   object-fit: contain;
   transition: var(--transition-bounce);
-  max-height: 48px;
+  max-height: 40px;
   width: auto;
 }
 
 .logo:hover .logoImg {
-  transform: scale(1.03);
+  transform: scale(1.05);
+}
+
+.logoText {
+  font-family: var(--font-title);
+  font-weight: 900;
+  font-size: 1.4rem;
+  letter-spacing: 0.05em;
+  color: #FFFFFF;
 }
 
 /* Desktop Nav */

@@ -22,10 +22,13 @@ export default function Footer() {
             <Image 
               src="/logo.png" 
               alt="Leleka Inc. Logo" 
-              width={160} 
+              width={40} 
               height={40} 
               className={styles.logoImg}
             />
+            <span className={styles.logoText}>
+              LELEKA<span className="text-orange">INC</span>
+            </span>
           </Link>
           <p className={styles.description}>
             Delivering high-performance, modern construction and remodeling solutions. 
