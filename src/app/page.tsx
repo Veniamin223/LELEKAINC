@@ -266,7 +266,7 @@ export default function Home() {
         <div className={styles.panoramicVideoWrapper}>
           <video 
             ref={showcaseVideoRef}
-            src="/Construction_time-lapse_and_reveal_4K_202607151151.mp4"
+            src="/Construction_time-lapse_and_reveal_4K_202607151152.mp4"
             poster="/projects/adu_addition.png"
             autoPlay 
             loop 
