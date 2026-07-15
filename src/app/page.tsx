@@ -261,37 +261,36 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Video Showcase Section */}
-      <section className={styles.videoShowcaseSection}>
-        <div className="container">
-          <div className={styles.sectionHeader}>
-            <span className={styles.preTitle}>Craftsmanship in Motion</span>
-            <h2 className={styles.sectionTitle}>Our Process In Action</h2>
-            <p className={styles.sectionSubtitle}>
-              Watch a time-lapse of our custom builds coming to life. From ground-breaking foundation pouring to luxury finished handovers.
-            </p>
-          </div>
-          <motion.div 
-            className={styles.videoPlayerContainer}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: '-100px' }}
-            variants={fadeInUp}
-          >
-            <div className={styles.videoFrame}>
-              <video 
-                ref={showcaseVideoRef}
-                src="/Construction_time-lapse_and_reveal_4K_202607151151.mp4"
-                poster="/projects/adu_addition.png"
-                autoPlay 
-                loop 
-                muted 
-                playsInline 
-                controls
-                className={styles.showcaseVideo}
-              />
+      {/* Panoramic Video Showcase Section */}
+      <section className={styles.panoramicVideoSection}>
+        <div className={styles.panoramicVideoWrapper}>
+          <video 
+            ref={showcaseVideoRef}
+            src="/Construction_time-lapse_and_reveal_4K_202607151151.mp4"
+            poster="/projects/adu_addition.png"
+            autoPlay 
+            loop 
+            muted 
+            playsInline 
+            className={styles.panoramicVideo}
+          />
+          <div className={styles.panoramicOverlay}>
+            <div className="container">
+              <motion.div 
+                className={styles.panoramicContent}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, margin: '-100px' }}
+                variants={fadeInUp}
+              >
+                <span className={styles.panoramicTagline}>Craftsmanship in Motion</span>
+                <h2 className={styles.panoramicTitle}>Our Process In Action</h2>
+                <p className={styles.panoramicSubtitle}>
+                  Watch a time-lapse of our custom builds coming to life. From ground-breaking foundation to luxury finished handover.
+                </p>
+              </motion.div>
             </div>
-          </motion.div>
+          </div>
         </div>
       </section>
 
