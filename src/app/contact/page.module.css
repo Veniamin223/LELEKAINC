@@ -292,6 +292,12 @@
   box-shadow: 0 5px 15px rgba(255, 90, 31, 0.2);
 }
 
+.submitError {
+  color: #b91c1c;
+  line-height: 1.5;
+  margin-bottom: 1.25rem;
+}
+
 .formNav {
   display: flex;
   justify-content: space-between;

@@ -50,6 +50,8 @@ export default function Contact() {
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [clientNotified, setClientNotified] = useState(true);
+  const [submitError, setSubmitError] = useState('');
   const [submitting, setSubmitting] = useState(false);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -71,6 +73,7 @@ export default function Contact() {
     e.preventDefault();
     if (!formData.name || !formData.email || !formData.phone) return;
 
+    setSubmitError('');
     setSubmitting(true);
     
     try {
@@ -92,13 +95,15 @@ export default function Contact() {
 
       const data = await response.json();
       if (response.ok && data.success) {
+        setClientNotified(data.clientNotified !== false);
+        setSubmitError('');
         setSubmitted(true);
       } else {
-        alert(data.error || 'Failed to submit request. Please try again.');
+        setSubmitError(data.error || 'Failed to submit request. Please try again.');
       }
     } catch (error) {
       console.error('Error submitting form:', error);
-      alert('An unexpected error occurred. Please try again later.');
+      setSubmitError('An unexpected error occurred. Please try again later.');
     } finally {
       setSubmitting(false);
     }
@@ -244,12 +249,19 @@ export default function Contact() {
                   <p className={styles.successText}>
                     Thank you, <strong>{formData.name}</strong>. We have logged your request for a <strong>{projectType}</strong> project. Our Sacramento estimator will email you at <strong>{formData.email}</strong> or call <strong>{formData.phone}</strong> within 1 business day to coordinate an on-site consultation.
                   </p>
+                  {!clientNotified && (
+                    <p className={styles.successText}>
+                      The request reached our team, but the confirmation email could not be delivered. We will use your phone number instead.
+                    </p>
+                  )}
                   <button 
                     onClick={() => {
                       setStep(1);
                       setProjectType('');
                       setBudget('');
                       setFormData({ name: '', email: '', phone: '', city: '', message: '' });
+                      setClientNotified(true);
+                      setSubmitError('');
                       setSubmitted(false);
                     }} 
                     className="btn btn-outline"
@@ -444,6 +456,10 @@ export default function Contact() {
                             />
                           </div>
                         </div>
+
+                        {submitError && (
+                          <p className={styles.submitError} role="alert">{submitError}</p>
+                        )}
 
                         <div className={styles.formNav}>
                           <button
