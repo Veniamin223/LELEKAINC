@@ -18,15 +18,19 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 20) {
-        setScrolled(true);
-      } else {
-        setScrolled(false);
-      }
+      setScrolled(window.scrollY > 12);
     };
-    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  useEffect(() => {
+    document.body.style.overflow = isOpen ? 'hidden' : '';
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isOpen]);
 
   const navLinks = [
     { label: 'Home', path: '/' },
@@ -36,7 +40,7 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
   ];
 
   return (
-    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''}`}>
+    <header className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${pathname === '/' && !scrolled ? styles.overHero : ''}`}>
       <div className={`${styles.navContainer} container`}>
         {/* Logo */}
         <Link href="/" className={styles.logo}>
@@ -94,6 +98,14 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
 
       {/* Mobile Drawer Menu */}
       <div className={`${styles.mobileDrawer} ${isOpen ? styles.drawerOpen : ''}`}>
+        <button
+          type="button"
+          className={styles.closeBtn}
+          onClick={() => setIsOpen(false)}
+          aria-label="Close menu"
+        >
+          <X size={28} />
+        </button>
         <nav className={styles.mobileNav}>
           {navLinks.map((link) => (
             <Link

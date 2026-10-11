@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Instrument_Sans, Syne } from 'next/font/google';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Hammer, 
@@ -18,6 +19,16 @@ import {
   Award
 } from 'lucide-react';
 import styles from './page.module.css';
+
+const heroDisplay = Syne({
+  weight: ['500', '600'],
+  subsets: ['latin'],
+});
+
+const heroSans = Instrument_Sans({
+  weight: ['400', '500'],
+  subsets: ['latin'],
+});
 
 const STATS = [
   { id: 1, val: '10+', label: 'Years of Building Experience', icon: Award },
@@ -102,12 +113,11 @@ const TESTIMONIALS = [
   }
 ];
 
-const ROTATING_WORDS = ['VISION', 'DREAMS', 'SPACES', 'HOMES', 'FUTURE'];
+const ROTATING_WORDS = ['vision', 'dreams', 'spaces', 'homes', 'future'];
 
 export default function Home() {
   const [currentReview, setCurrentReview] = useState(0);
   const [wordIndex, setWordIndex] = useState(0);
-  const videoRef = useRef<HTMLVideoElement>(null);
   const showcaseVideoRef = useRef<HTMLVideoElement>(null);
 
   // Animate rotating word in Hero Title
@@ -119,29 +129,20 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const video = videoRef.current;
     const showcaseVideo = showcaseVideoRef.current;
-    if (!video) return;
+    if (!showcaseVideo) return;
 
-    video.muted = true;
-    video.playsInline = true;
-    if (showcaseVideo) {
-      showcaseVideo.muted = true;
-      showcaseVideo.playsInline = true;
-    }
+    showcaseVideo.muted = true;
+    showcaseVideo.playsInline = true;
 
-    const playVideos = () => {
-      video.play().catch(() => {});
-      if (showcaseVideo) {
-        showcaseVideo.play().catch(() => {});
-      }
+    const playVideo = () => {
+      showcaseVideo.play().catch(() => {});
     };
 
-    playVideos();
+    playVideo();
 
-    // Force play on first touch/click in case the mobile browser blocked it initially
     const handleInteraction = () => {
-      playVideos();
+      playVideo();
       window.removeEventListener('touchstart', handleInteraction);
       window.removeEventListener('click', handleInteraction);
     };
@@ -177,31 +178,26 @@ export default function Home() {
     <div>
       {/* Hero Section */}
       <section className={styles.hero}>
-        {/* Full-width cinematic background video */}
-        <video 
-          ref={videoRef}
-          src="/Construction_remodeling_cinematic_4K_202607151125.mp4"
-          poster="/projects/home_remodel.png"
-          autoPlay 
-          loop 
-          muted 
-          playsInline 
-          className={styles.bgVideo}
+        <Image
+          src="/hero-home.jpg"
+          alt="A finished modern California home at dusk, with limestone walls and warm interior light"
+          fill
+          priority
+          sizes="100vw"
+          className={styles.bgImage}
         />
-        
-        {/* Cinematic dark overlay */}
         <div className={styles.overlay} />
 
         <div className={`${styles.heroContainer} container`}>
           <motion.div 
-            className={styles.heroContent}
+            className={`${styles.heroContent} ${heroSans.className}`}
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
           >
             <span className={styles.tagline}>California Licensed Contractor</span>
-            <h1 className={styles.title}>
-              Building Your <br />
+            <h1 className={`${styles.title} ${heroDisplay.className}`}>
+              Building your <br />
               <span className={styles.rotatingWordContainer}>
                 <AnimatePresence mode="wait">
                   <motion.span
@@ -210,14 +206,14 @@ export default function Home() {
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0, y: -15 }}
                     transition={{ duration: 0.4 }}
-                    className="text-orange"
+                    className={`${styles.rotatingWord} text-orange`}
                     style={{ display: 'inline-block' }}
                   >
                     {ROTATING_WORDS[wordIndex]}
                   </motion.span>
                 </AnimatePresence>
               </span> <br />
-              From The Ground Up
+              from the ground up
             </h1>
             <p className={styles.subtitle}>
               Premium custom home builds, Accessory Dwelling Units (ADUs), and full remodeling services. 
