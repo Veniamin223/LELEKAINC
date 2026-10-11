@@ -78,38 +78,40 @@ const PROCESS_STEPS = [
   }
 ];
 
-const TESTIMONIALS = [
-  {
-    name: 'Mark & Sarah J.',
-    location: 'Sacramento, CA',
-    text: 'Leleka Inc. built our ADU from scratch. They navigated the permits, finished on schedule, and the framing quality was outstanding. We couldn\'t be happier with our new space!',
-    stars: 5,
-    project: 'Backyard ADU Build'
-  },
-  {
-    name: 'David L.',
-    location: 'Roseville, CA',
-    text: 'We hired them for a complete kitchen and living room remodel. They removed three walls and installed a massive steel support beam. Super professional team, very clean site.',
-    stars: 5,
-    project: 'Full Living Remodel'
-  },
-  {
-    name: 'Elena K.',
-    location: 'Folsom, CA',
-    text: 'The best contractor I\'ve ever worked with. They redid our roofing and built a custom backyard composite deck. Outstanding attention to detail, highly energetic crew!',
-    stars: 5,
-    project: 'Roofing & Composite Deck'
-  }
-];
+type PublicReview = {
+  id: string;
+  name: string;
+  location: string;
+  project: string;
+  rating: number;
+  body: string;
+};
 
 const ROTATING_WORDS = ['vision', 'dreams', 'spaces', 'homes', 'future'];
 
 export default function Home() {
   const [currentReview, setCurrentReview] = useState(0);
+  const [publishedReviews, setPublishedReviews] = useState<PublicReview[]>([]);
   const [wordIndex, setWordIndex] = useState(0);
   const showcaseVideoRef = useRef<HTMLVideoElement>(null);
 
   // Animate rotating word in Hero Title
+  useEffect(() => {
+    let ignore = false;
+    fetch('/api/reviews')
+      .then((response) => response.json())
+      .then((data) => {
+        if (!ignore && Array.isArray(data.reviews)) {
+          setPublishedReviews(data.reviews);
+          setCurrentReview(0);
+        }
+      })
+      .catch(() => undefined);
+    return () => {
+      ignore = true;
+    };
+  }, []);
+
   useEffect(() => {
     const wordInterval = setInterval(() => {
       setWordIndex((prev) => (prev + 1) % ROTATING_WORDS.length);
@@ -146,12 +148,14 @@ export default function Home() {
   }, []);
 
   const nextReview = () => {
-    setCurrentReview((prev) => (prev === TESTIMONIALS.length - 1 ? 0 : prev + 1));
+    setCurrentReview((prev) => (publishedReviews.length === 0 ? 0 : (prev + 1) % publishedReviews.length));
   };
 
   const prevReview = () => {
-    setCurrentReview((prev) => (prev === 0 ? TESTIMONIALS.length - 1 : prev - 1));
+    setCurrentReview((prev) => (publishedReviews.length === 0 ? 0 : (prev - 1 + publishedReviews.length) % publishedReviews.length));
   };
+
+  const activeReview = publishedReviews[currentReview];
 
   // Variants for Framer Motion animations
   const fadeInUp = {
@@ -378,43 +382,58 @@ export default function Home() {
               <span className={styles.preTitle}>Client Testimonials</span>
               <h2 className={styles.reviewsTitle}>Word On The Street</h2>
               <p className={styles.reviewsSubtitle}>
-                See how we exceed client expectations in Sacramento, Folsom, Roseville, and nearby cities.
+                Notes from homeowners across Sacramento County. Every review is read before it is published.
               </p>
               <div className={styles.sliderControls}>
-                <button onClick={prevReview} className={styles.sliderBtn} aria-label="Previous review">
-                  <ChevronLeft size={20} />
-                </button>
-                <button onClick={nextReview} className={styles.sliderBtn} aria-label="Next review">
-                  <ChevronRight size={20} />
-                </button>
+                {publishedReviews.length > 1 && (
+                  <>
+                    <button onClick={prevReview} className={styles.sliderBtn} aria-label="Previous review">
+                      <ChevronLeft size={20} />
+                    </button>
+                    <button onClick={nextReview} className={styles.sliderBtn} aria-label="Next review">
+                      <ChevronRight size={20} />
+                    </button>
+                  </>
+                )}
+                <Link href="/reviews/new" className="btn btn-primary">
+                  Leave a Review
+                </Link>
               </div>
             </div>
 
             <div className={styles.reviewsRight}>
-              <motion.div 
-                key={currentReview}
-                initial={{ opacity: 0, x: 50 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -50 }}
-                transition={{ duration: 0.4 }}
-                className={`${styles.reviewCard} glass`}
-              >
-                <div className={styles.reviewHeader}>
-                  <div className={styles.stars}>
-                    {[...Array(TESTIMONIALS[currentReview].stars)].map((_, i) => (
-                      <Star key={i} size={18} fill="var(--primary)" color="var(--primary)" />
-                    ))}
+              {activeReview ? (
+                <motion.div
+                  key={activeReview.id}
+                  initial={{ opacity: 0, x: 50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ duration: 0.4 }}
+                  className={`${styles.reviewCard} glass`}
+                >
+                  <div className={styles.reviewHeader}>
+                    <div className={styles.stars}>
+                      {[...Array(activeReview.rating)].map((_, i) => (
+                        <Star key={i} size={18} fill="var(--primary)" color="var(--primary)" />
+                      ))}
+                    </div>
+                    {activeReview.project && <span className={styles.reviewProject}>{activeReview.project}</span>}
                   </div>
-                  <span className={styles.reviewProject}>{TESTIMONIALS[currentReview].project}</span>
+                  <p className={styles.reviewText}>
+                    &ldquo;{activeReview.body}&rdquo;
+                  </p>
+                  <div className={styles.reviewerInfo}>
+                    <h4 className={styles.reviewerName}>{activeReview.name}</h4>
+                    {activeReview.location && <p className={styles.reviewerLoc}>{activeReview.location}</p>}
+                  </div>
+                </motion.div>
+              ) : (
+                <div className={`${styles.reviewCard} glass`}>
+                  <p className={styles.reviewText}>Published reviews will appear here.</p>
+                  <Link href="/reviews" className={styles.serviceLink}>
+                    Open the review ribbon <ArrowRight size={16} />
+                  </Link>
                 </div>
-                <p className={styles.reviewText}>
-                  &ldquo;{TESTIMONIALS[currentReview].text}&rdquo;
-                </p>
-                <div className={styles.reviewerInfo}>
-                  <h4 className={styles.reviewerName}>{TESTIMONIALS[currentReview].name}</h4>
-                  <p className={styles.reviewerLoc}>{TESTIMONIALS[currentReview].location}</p>
-                </div>
-              </motion.div>
+              )}
             </div>
           </div>
         </div>

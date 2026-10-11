@@ -36,6 +36,7 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
     { label: 'Home', path: '/' },
     { label: 'Services', path: '/services' },
     { label: 'Projects', path: '/projects' },
+    { label: 'Reviews', path: '/reviews' },
     { label: 'Contact', path: '/contact' },
   ];
 
