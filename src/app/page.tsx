@@ -3,7 +3,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Instrument_Sans, Syne } from 'next/font/google';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
   Hammer, 
@@ -19,16 +18,6 @@ import {
   Award
 } from 'lucide-react';
 import styles from './page.module.css';
-
-const heroDisplay = Syne({
-  weight: ['500', '600'],
-  subsets: ['latin'],
-});
-
-const heroSans = Instrument_Sans({
-  weight: ['400', '500'],
-  subsets: ['latin'],
-});
 
 const STATS = [
   { id: 1, val: '10+', label: 'Years of Building Experience', icon: Award },
@@ -190,13 +179,13 @@ export default function Home() {
 
         <div className={`${styles.heroContainer} container`}>
           <motion.div 
-            className={`${styles.heroContent} ${heroSans.className}`}
+            className={styles.heroContent}
             initial="hidden"
             animate="visible"
             variants={fadeInUp}
           >
             <span className={styles.tagline}>California Licensed Contractor</span>
-            <h1 className={`${styles.title} ${heroDisplay.className}`}>
+            <h1 className={styles.title}>
               Building your <br />
               <span className={styles.rotatingWordContainer}>
                 <AnimatePresence mode="wait">

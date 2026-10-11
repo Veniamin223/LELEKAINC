@@ -45,6 +45,7 @@
   max-width: 850px;
   transform: translateY(-7rem); /* Position text block higher */
   transition: transform 0.3s ease;
+  font-family: 'Instrument Sans', var(--font-body), sans-serif;
 }
 
 .tagline {
@@ -58,6 +59,7 @@
 }
 
 .title {
+  font-family: 'Syne', var(--font-title), sans-serif;
   font-size: clamp(3.35rem, 6.4vw, 6.1rem);
   font-weight: 500;
   line-height: 0.96;
