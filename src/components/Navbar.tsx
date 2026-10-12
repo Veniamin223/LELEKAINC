@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { createPortal } from 'react-dom';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
@@ -15,6 +16,11 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
   const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -41,6 +47,7 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
   ];
 
   return (
+    <>
     <header className={`${styles.header} ${scrolled ? styles.scrolled : ''} ${pathname === '/' && !scrolled ? styles.overHero : ''}`}>
       <div className={`${styles.navContainer} container`}>
         {/* Logo */}
@@ -97,37 +104,42 @@ export default function Navbar({ onSearchOpen }: NavbarProps) {
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
-      <div className={`${styles.mobileDrawer} ${isOpen ? styles.drawerOpen : ''}`}>
-        <button
-          type="button"
-          className={styles.closeBtn}
-          onClick={() => setIsOpen(false)}
-          aria-label="Close menu"
-        >
-          <X size={28} />
-        </button>
-        <nav className={styles.mobileNav}>
-          {navLinks.map((link) => (
-            <Link
-              key={link.path}
-              href={link.path}
-              className={`${styles.mobileNavLink} ${pathname === link.path ? styles.activeMobileLink : ''}`}
-              onClick={() => setIsOpen(false)}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <a href="tel:+19165399005" className={`${styles.mobilePhoneBtn} btn btn-primary`}>
-            <Phone size={18} />
-            +1 (916) 539-9005
-          </a>
-          <div className={styles.mobileMeta}>
-            <p>Sacramento & County, CA</p>
-            <p>lelekainc.ca@gmail.com</p>
-          </div>
-        </nav>
-      </div>
     </header>
+    {mounted
+      ? createPortal(
+          <div className={`${styles.mobileDrawer} ${isOpen ? styles.drawerOpen : ''}`}>
+            <button
+              type="button"
+              className={styles.closeBtn}
+              onClick={() => setIsOpen(false)}
+              aria-label="Close menu"
+            >
+              <X size={28} />
+            </button>
+            <nav className={styles.mobileNav}>
+              {navLinks.map((link) => (
+                <Link
+                  key={link.path}
+                  href={link.path}
+                  className={`${styles.mobileNavLink} ${pathname === link.path ? styles.activeMobileLink : ''}`}
+                  onClick={() => setIsOpen(false)}
+                >
+                  {link.label}
+                </Link>
+              ))}
+              <a href="tel:+19165399005" className={`${styles.mobilePhoneBtn} btn btn-primary`}>
+                <Phone size={18} />
+                +1 (916) 539-9005
+              </a>
+              <div className={styles.mobileMeta}>
+                <p>Sacramento & County, CA</p>
+                <p>lelekainc.ca@gmail.com</p>
+              </div>
+            </nav>
+          </div>,
+          document.body
+        )
+      : null}
+    </>
   );
 }
