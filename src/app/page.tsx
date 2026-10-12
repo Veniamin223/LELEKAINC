@@ -274,22 +274,21 @@ export default function Home() {
       </section>
 
       {publishedReviews.length > 0 && (
-        <section className={styles.filmStrip} aria-label="Client reviews">
-          <div className={styles.sprockets} aria-hidden="true" />
-          <div className={styles.filmViewport}>
+        <section className={styles.reviewRibbon} aria-label="Client reviews">
+          <div className={styles.reviewViewport}>
             <div
-              className={`${styles.filmTrack} ${publishedReviews.length > 2 ? styles.filmMoving : ''}`}
-              style={{ '--film-duration': `${Math.max(publishedReviews.length, 3) * 9}s` } as React.CSSProperties}
+              className={`${styles.reviewTrack} ${publishedReviews.length > 2 ? styles.reviewMoving : styles.reviewStill}`}
+              style={{ '--review-duration': `${Math.max(publishedReviews.length, 3) * 9}s` } as React.CSSProperties}
             >
               {filmReviews.map((review, index) => (
-                <article key={`${review.id}-${index}`} className={styles.filmFrame}>
-                  <div className={styles.filmStars} aria-label={`${review.rating} out of 5`}>
+                <article key={`${review.id}-${index}`} className={styles.reviewTile}>
+                  <div className={styles.reviewTileStars} aria-label={`${review.rating} out of 5`}>
                     {[...Array(review.rating)].map((_, star) => (
-                      <Star key={star} size={14} fill="var(--primary)" color="var(--primary)" />
+                      <Star key={star} size={15} fill="var(--primary)" color="var(--primary)" />
                     ))}
                   </div>
-                  <p className={styles.filmQuote}>&ldquo;{review.body}&rdquo;</p>
-                  <div className={styles.filmPerson}>
+                  <p className={styles.reviewTileQuote}>&ldquo;{review.body}&rdquo;</p>
+                  <div className={styles.reviewTilePerson}>
                     <strong>{review.name}</strong>
                     <span>{[review.location, review.project].filter(Boolean).join(' · ')}</span>
                   </div>
@@ -297,7 +296,6 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className={styles.sprockets} aria-hidden="true" />
         </section>
       )}
 
