@@ -1,11 +1,20 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import SiteFrame from '@/components/SiteFrame';
+import { JsonLd } from '@/components/JsonLd';
+import { businessJsonLd, pageMeta, SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = {
-  title: 'Leleka Inc. | Modern Construction & Remodeling Sacramento',
-  description: 'Leleka Inc. delivers custom home building, ADUs, kitchen/bathroom remodeling, roofing, and siding in Sacramento County, CA. Bold designs & high-performance craftsmanship.',
-  keywords: 'Construction, Remodeling, Sacramento, ADU, Home Builder, Kitchen Remodel, Bathroom Remodel, Roofing, Siding, Decks, Patio, California',
+  metadataBase: new URL(SITE_URL),
+  ...pageMeta({
+    title: 'Construction and Remodeling in Sacramento',
+    description: 'Leleka Builder Inc. (Leleka Inc.) is a California licensed general contractor, CSLB #1146118, in Fair Oaks. Custom homes, ADUs, kitchen and bathroom remodels, roofing, siding, and decks across Sacramento County.',
+    path: '/',
+  }),
+  title: {
+    default: 'Leleka Inc. | Construction and Remodeling in Sacramento',
+    template: '%s | Leleka Inc.',
+  },
 };
 
 export default function RootLayout({
@@ -16,8 +25,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <JsonLd data={businessJsonLd()} />
         <SiteFrame>{children}</SiteFrame>
       </body>
     </html>
   );
 }
+

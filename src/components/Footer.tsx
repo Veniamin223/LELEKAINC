@@ -58,12 +58,14 @@ export default function Footer() {
         <div className={styles.columnServices}>
           <h3 className={styles.title}>Services</h3>
           <ul className={styles.list}>
-            <li><Link href="/services#new-construction">New Construction</Link></li>
-            <li><Link href="/services#adu-additions">ADUs & Additions</Link></li>
-            <li><Link href="/services#full-remodel">Full Home Remodels</Link></li>
-            <li><Link href="/services#kitchen-bathroom">Kitchens & Bathrooms</Link></li>
-            <li><Link href="/services#roofing-siding">Roofing & Siding</Link></li>
-            <li><Link href="/services#landscaping-decks">Landscape & Decks</Link></li>
+            <li><Link href="/services/new-construction">New Construction</Link></li>
+            <li><Link href="/services/adu-additions">ADUs & Additions</Link></li>
+            <li><Link href="/services/full-remodel">Full Home Remodels</Link></li>
+            <li><Link href="/services/kitchens">Kitchen Remodeling</Link></li>
+            <li><Link href="/services/bathrooms">Bathroom Renovation</Link></li>
+            <li><Link href="/services/roofing">Roofing</Link></li>
+            <li><Link href="/services/siding">Siding</Link></li>
+            <li><Link href="/services/landscape-decks">Landscape & Decks</Link></li>
           </ul>
         </div>
 
@@ -81,7 +83,7 @@ export default function Footer() {
             </li>
             <li>
               <MapPin size={18} className="text-orange" />
-              <span>Sacramento & surrounding counties, California</span>
+              <span>8475 Friar Tuck Way, Fair Oaks, CA 95628</span>
             </li>
           </ul>
         </div>

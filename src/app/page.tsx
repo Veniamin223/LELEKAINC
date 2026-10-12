@@ -30,21 +30,21 @@ const SERVICES = [
     title: 'New Construction',
     desc: 'Building custom residential homes from scratch. Complete design-build services with premium architectural finishes.',
     icon: HomeIcon,
-    link: '/services#new-construction',
+    link: '/services/new-construction',
     img: '/projects/home_remodel.png'
   },
   {
     title: 'ADU & Additions',
     desc: 'Unlock extra rental income or multi-generational space with stunning accessory dwelling units and extensions.',
     icon: Layers,
-    link: '/services#adu-additions',
+    link: '/services/adu-additions',
     img: '/projects/adu_addition.png'
   },
   {
     title: 'Full Remodeling',
     desc: 'Breathe new life into your home. Comprehensive updates, wall-knockouts, load-bearing beams, and layout optimization.',
     icon: Hammer,
-    link: '/services#full-remodel',
+    link: '/services/full-remodel',
     img: '/projects/kitchen_remodel.png'
   }
 ];

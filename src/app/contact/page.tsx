@@ -155,8 +155,17 @@ export default function Contact() {
                     <MapPin size={20} className="text-orange" />
                   </div>
                   <div>
+                    <span className={styles.infoLabel}>Office</span>
+                    <span className={styles.infoVal}>8475 Friar Tuck Way, Fair Oaks, CA 95628</span>
+                  </div>
+                </li>
+                <li>
+                  <div className={styles.iconWrapper}>
+                    <MapPin size={20} className="text-orange" />
+                  </div>
+                  <div>
                     <span className={styles.infoLabel}>Service Area</span>
-                    <span className={styles.infoVal}>Sacramento & Surrounding Counties, CA</span>
+                    <span className={styles.infoVal}>Sacramento County and nearby cities</span>
                   </div>
                 </li>
                 <li>

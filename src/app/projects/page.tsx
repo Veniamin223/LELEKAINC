@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Search, Calendar, Landmark, MapPin, X } from 'lucide-react';
 import styles from './page.module.css';
+import { PROJECTS_CONTENT as PROJECTS_DATA } from '@/lib/projects-content';
 
 interface Project {
   id: string;
@@ -22,64 +23,6 @@ interface Project {
   };
 }
 
-const PROJECTS_DATA: Project[] = [
-  {
-    id: 'adu-sacramento',
-    title: 'Modern ADU Addition',
-    category: 'adu',
-    categoryLabel: 'ADU / Addition',
-    location: 'Sacramento, CA',
-    image: '/projects/adu_addition.png',
-    description: 'A custom, detached accessory dwelling unit built to maximize utility and aesthetic flow in a residential backyard. Features high-efficiency windows, durable standing seam detailing, custom wood accents, and a fully equipped private kitchen and bathroom.',
-    specs: {
-      duration: '5 Months',
-      size: '750 sq ft',
-      features: ['Independent Power Meter', 'Smart Space Planning', 'Durable Wood-Style Cladding', 'Energy-Efficient Insulation']
-    }
-  },
-  {
-    id: 'remodel-roseville',
-    title: 'Contemporary Home Remodeling',
-    category: 'remodel',
-    categoryLabel: 'Full Remodel',
-    location: 'Roseville, CA',
-    image: '/projects/home_remodel.png',
-    description: 'Complete transformation of a 1990s floor plan into a spacious, light-filled contemporary open-concept layout. The renovation involved the demolition of three non-structural walls, installation of a massive structural steel load-bearing header, recessed lighting design, and premium engineered oak flooring.',
-    specs: {
-      duration: '3.5 Months',
-      size: '2,100 sq ft',
-      features: ['Load-Bearing Wall Demolition', 'Engineered Oak Flooring', 'Integrated Ambient LED Panels', 'Modern Dual-Zone HVAC Control']
-    }
-  },
-  {
-    id: 'deck-folsom',
-    title: 'Custom Backyard & Deck Project',
-    category: 'deck',
-    categoryLabel: 'Landscape / Deck',
-    location: 'Folsom, CA',
-    image: '/projects/backyard_deck.png',
-    description: 'An elegant multi-level composite redwood deck engineered for extreme durability and low-maintenance luxury. It wraps around the backyard slope and includes built-in seating, custom concrete paver borders, safety-rated ambient step lighting, and an integrated pergola overhead cover.',
-    specs: {
-      duration: '4 Weeks',
-      size: '950 sq ft',
-      features: ['TimberTech Composite Decking', 'Custom Ambient Stair Lighting', 'Engineered Concrete Pier Footer', 'Integrated Cedar Pergola']
-    }
-  },
-  {
-    id: 'kitchen-elkgrove',
-    title: 'Kitchen Remodeling Excellence',
-    category: 'remodel',
-    categoryLabel: 'Kitchen Remodel',
-    location: 'Elk Grove, CA',
-    image: '/projects/kitchen_remodel.png',
-    description: 'A master chef-grade kitchen rebuild with high-end modern visual aesthetics. Includes custom walnut cabinets with soft-close joints, a stunning double-waterfall quartz island, premium commercial appliances, under-cabinet lighting system, and a custom built-in pantry.',
-    specs: {
-      duration: '6 Weeks',
-      size: '320 sq ft',
-      features: ['Waterfall Quartz Island', 'Custom Walnut Cabinets', 'Commercial Smart Range & Hood', 'Hidden Outlets & USB Ports']
-    }
-  }
-];
 
 const CATEGORIES = [
   { id: 'all', label: 'All Projects' },
@@ -209,7 +152,11 @@ export default function Projects() {
                         {project.location}
                       </span>
                     </div>
-                    <h3 className={styles.cardTitle}>{project.title}</h3>
+                    <h3 className={styles.cardTitle}>
+                      <Link href={`/projects/${project.id}`} onClick={(event) => event.stopPropagation()}>
+                        {project.title}
+                      </Link>
+                    </h3>
                     <p className={styles.cardDesc}>{project.description}</p>
                   </div>
                 </motion.div>

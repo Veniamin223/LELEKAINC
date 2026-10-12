@@ -25,70 +25,70 @@ const SEARCH_DATABASE: SearchItem[] = [
     title: 'New Construction (House building from scratch)',
     category: 'service',
     description: 'Custom home building from initial site preparation to final architectural finishing.',
-    link: '/services#new-construction'
+    link: '/services/new-construction'
   },
   {
     id: 's-2',
     title: 'ADU (Accessory Dwelling Units) & Additions',
     category: 'service',
     description: 'Expand your living space with secondary dwellings, backyard cottages, or house extensions.',
-    link: '/services#adu-additions'
+    link: '/services/adu-additions'
   },
   {
     id: 's-3',
     title: 'Full Home Remodel',
     category: 'service',
     description: 'Transform your existing residence with custom design planning, wall removals, and modern rebuilds.',
-    link: '/services#full-remodel'
+    link: '/services/full-remodel'
   },
   {
     id: 's-4',
     title: 'Kitchen Remodeling',
     category: 'service',
     description: 'Luxury cabinet installations, stone countertops, custom islands, and plumbing fixtures.',
-    link: '/services#kitchen-bathroom'
+    link: '/services/kitchens'
   },
   {
     id: 's-5',
     title: 'Bathroom Renovations',
     category: 'service',
     description: 'Premium tile work, walk-in steam showers, free-standing tubs, and modern vanity installs.',
-    link: '/services#kitchen-bathroom'
+    link: '/services/bathrooms'
   },
   {
     id: 's-6',
     title: 'Roofing Services',
     category: 'service',
     description: 'Full roof replacements, roof inspections, commercial shingle layovers, and storm repairs.',
-    link: '/services#roofing-siding'
+    link: '/services/roofing'
   },
   {
     id: 's-7',
     title: 'Facades & Siding',
     category: 'service',
     description: 'Boost curb appeal with vinyl, fiber cement stucco siding, and exterior paint jobs.',
-    link: '/services#roofing-siding'
+    link: '/services/siding'
   },
   {
     id: 's-8',
     title: 'Landscape & Custom Decks',
     category: 'service',
     description: 'Custom wood/composite deck installations, stone patios, fire pits, and backyard hardscaping.',
-    link: '/services#landscaping-decks'
+    link: '/services/landscape-decks'
   },
   {
     id: 's-9',
     title: 'Electrical & Plumbing',
     category: 'service',
     description: 'Certified electrical rewiring, lighting designs, main water line replacements, and water heaters.',
-    link: '/services#electrical-plumbing'
+    link: '/services/electrical-plumbing'
   },
   {
     id: 's-10',
     title: 'Commercial & Custom Projects',
     category: 'service',
     description: 'Retail build-outs, tenant improvements, custom carpentry, and specialty structures.',
-    link: '/services#other-services'
+    link: '/services/other-services'
   },
   // Projects
   {
@@ -96,28 +96,28 @@ const SEARCH_DATABASE: SearchItem[] = [
     title: 'Modern ADU Addition in Sacramento',
     category: 'project',
     description: 'A 750 sq ft independent backyard ADU with modern minimalist aesthetics and full kitchen.',
-    link: '/projects?id=adu-sacramento'
+    link: '/projects/adu-sacramento'
   },
   {
     id: 'p-2',
     title: 'Contemporary Home Remodeling in Roseville',
     category: 'project',
     description: 'Open-concept layout upgrade including custom load-bearing beam installation and wide-plank flooring.',
-    link: '/projects?id=remodel-roseville'
+    link: '/projects/remodel-roseville'
   },
   {
     id: 'p-3',
     title: 'Custom Backyard & Deck Project in Folsom',
     category: 'project',
     description: 'Multi-tiered redwood deck featuring built-in LED ambient lighting and custom concrete patio.',
-    link: '/projects?id=deck-folsom'
+    link: '/projects/deck-folsom'
   },
   {
     id: 'p-4',
     title: 'Kitchen Remodeling Excellence in Elk Grove',
     category: 'project',
     description: 'Gourmet chef kitchen remodel with waterfall quartz island, custom walnut cabinets, and smart appliances.',
-    link: '/projects?id=kitchen-elkgrove'
+    link: '/projects/kitchen-elkgrove'
   }
 ];
 

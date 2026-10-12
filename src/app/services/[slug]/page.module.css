@@ -1,0 +1,64 @@
+.page {
+  background: var(--bg-light);
+  color: #0b0f17;
+}
+
+.banner {
+  padding: 9.5rem 0 3.5rem;
+  background: #ffffff;
+  border-bottom: 1px solid var(--border-light);
+}
+
+.crumb {
+  margin-bottom: 1rem;
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.crumb a {
+  color: var(--primary);
+}
+
+.banner h1 {
+  max-width: 18ch;
+  margin-bottom: 1rem;
+  font-size: clamp(2.4rem, 5vw, 4rem);
+}
+
+.banner p,
+.lead {
+  max-width: 42rem;
+  font-size: 1.08rem;
+  line-height: 1.7;
+}
+
+.body {
+  padding: 3rem 1.5rem 5rem;
+}
+
+.body h2 {
+  margin: 2.2rem 0 0.9rem;
+  font-size: 1.4rem;
+}
+
+.body ul {
+  display: grid;
+  gap: 0.55rem;
+  margin-left: 1.1rem;
+  color: #374151;
+}
+
+.faq {
+  margin-bottom: 1.2rem;
+}
+
+.faq h3 {
+  margin-bottom: 0.35rem;
+  font-size: 1.05rem;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+.body .btn {
+  margin-top: 1.5rem;
+}
