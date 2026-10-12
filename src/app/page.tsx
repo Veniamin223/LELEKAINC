@@ -16,6 +16,7 @@ import {
   Award
 } from 'lucide-react';
 import styles from './page.module.css';
+import ReviewCard from '@/components/ReviewCard';
 
 const STATS = [
   { id: 1, val: '10+', label: 'Years of Building Experience', icon: Award },
@@ -83,6 +84,7 @@ type PublicReview = {
   project: string;
   rating: number;
   body: string;
+  publishedAt?: string | null;
 };
 
 const ROTATING_WORDS = ['vision', 'dreams', 'spaces', 'homes', 'future'];
@@ -281,18 +283,9 @@ export default function Home() {
               style={{ '--review-duration': `${Math.max(publishedReviews.length, 3) * 9}s` } as React.CSSProperties}
             >
               {filmReviews.map((review, index) => (
-                <article key={`${review.id}-${index}`} className={styles.reviewTile}>
-                  <div className={styles.reviewTileStars} aria-label={`${review.rating} out of 5`}>
-                    {[...Array(review.rating)].map((_, star) => (
-                      <Star key={star} size={15} fill="var(--primary)" color="var(--primary)" />
-                    ))}
-                  </div>
-                  <p className={styles.reviewTileQuote}>&ldquo;{review.body}&rdquo;</p>
-                  <div className={styles.reviewTilePerson}>
-                    <strong>{review.name}</strong>
-                    <span>{[review.location, review.project].filter(Boolean).join(' · ')}</span>
-                  </div>
-                </article>
+                <div key={`${review.id}-${index}`} className={styles.reviewTile}>
+                  <ReviewCard review={review} compact />
+                </div>
               ))}
             </div>
           </div>

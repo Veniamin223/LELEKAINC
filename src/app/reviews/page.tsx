@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from 'react';
 import Link from 'next/link';
-import { Star } from 'lucide-react';
+import ReviewCard from '@/components/ReviewCard';
 import styles from './page.module.css';
 
 type PublicReview = {
@@ -12,6 +12,7 @@ type PublicReview = {
   project: string;
   rating: number;
   body: string;
+  publishedAt?: string | null;
 };
 
 export default function ReviewsPage() {
@@ -48,19 +49,7 @@ export default function ReviewsPage() {
           )}
           <div className={styles.ribbon}>
             {reviews.map((review) => (
-              <article key={review.id} className={styles.card}>
-                <div className={styles.stars} aria-label={`${review.rating} out of 5`}>
-                  {[...Array(review.rating)].map((_, index) => (
-                    <Star key={index} size={16} fill="var(--primary)" color="var(--primary)" />
-                  ))}
-                </div>
-                {review.project && <span className={styles.project}>{review.project}</span>}
-                <p className={styles.quote}>&ldquo;{review.body}&rdquo;</p>
-                <div className={styles.person}>
-                  <strong>{review.name}</strong>
-                  {review.location && <span>{review.location}</span>}
-                </div>
-              </article>
+              <ReviewCard key={review.id} review={review} />
             ))}
           </div>
         </div>

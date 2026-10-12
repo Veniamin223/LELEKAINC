@@ -43,48 +43,6 @@
   gap: 1.25rem;
 }
 
-.card {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-  min-height: 16rem;
-  padding: 1.6rem;
-  background: #ffffff;
-  border: 1px solid var(--border-light);
-}
-
-.stars {
-  display: flex;
-  gap: 0.2rem;
-}
-
-.project {
-  color: var(--primary);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-}
-
-.quote {
-  color: #1f2937;
-  line-height: 1.65;
-}
-
-.person {
-  margin-top: auto;
-}
-
-.person strong {
-  display: block;
-  color: #0b0f17;
-}
-
-.person span {
-  color: var(--text-dark-muted);
-  font-size: 0.9rem;
-}
-
 .empty {
   padding: 2rem 0 1rem;
   color: var(--text-dark-muted);
