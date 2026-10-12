@@ -668,8 +668,99 @@
   padding: 0;
   background-color: var(--bg-light);
   border-top: 1px solid var(--border-light);
-  border-bottom: 1px solid var(--border-light);
   overflow: hidden;
+}
+
+.filmStrip {
+  background: #111111;
+  padding: 0.45rem 0 0.5rem;
+  overflow: hidden;
+}
+
+.sprockets {
+  height: 16px;
+  background-image: radial-gradient(circle at center, #3a3a3a 4.5px, transparent 5px);
+  background-size: 32px 16px;
+  background-repeat: repeat-x;
+  background-position: center;
+}
+
+.filmViewport {
+  overflow: hidden;
+  margin: 0.35rem 0;
+}
+
+.filmTrack {
+  display: flex;
+  width: max-content;
+  padding: 0;
+}
+
+.filmMoving {
+  animation: filmLeft var(--film-duration, 36s) linear infinite;
+}
+
+.filmStrip:hover .filmMoving,
+.filmStrip:focus-within .filmMoving {
+  animation-play-state: paused;
+}
+
+.filmFrame {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  width: min(360px, 78vw);
+  min-height: 168px;
+  flex: 0 0 auto;
+  margin-right: 0.7rem;
+  padding: 1.05rem 1.15rem 1rem;
+  background: #f6f4f1;
+  color: #0b0f17;
+}
+
+.filmStars {
+  display: flex;
+  gap: 0.15rem;
+}
+
+.filmQuote {
+  color: #1f2937;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.filmPerson {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.filmPerson strong {
+  font-family: var(--font-title);
+  font-size: 0.82rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.filmPerson span {
+  color: #6b7280;
+  font-size: 0.8rem;
+}
+
+@keyframes filmLeft {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .filmMoving {
+    animation: none;
+  }
 }
 
 .panoramicVideoWrapper {

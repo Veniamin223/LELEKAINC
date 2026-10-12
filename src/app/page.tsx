@@ -11,8 +11,6 @@ import {
   ArrowRight, 
   CheckCircle, 
   Star, 
-  ChevronLeft, 
-  ChevronRight,
   TrendingUp,
   Map,
   Award
@@ -90,7 +88,6 @@ type PublicReview = {
 const ROTATING_WORDS = ['vision', 'dreams', 'spaces', 'homes', 'future'];
 
 export default function Home() {
-  const [currentReview, setCurrentReview] = useState(0);
   const [publishedReviews, setPublishedReviews] = useState<PublicReview[]>([]);
   const [wordIndex, setWordIndex] = useState(0);
   const showcaseVideoRef = useRef<HTMLVideoElement>(null);
@@ -103,7 +100,6 @@ export default function Home() {
       .then((data) => {
         if (!ignore && Array.isArray(data.reviews)) {
           setPublishedReviews(data.reviews);
-          setCurrentReview(0);
         }
       })
       .catch(() => undefined);
@@ -147,15 +143,9 @@ export default function Home() {
     };
   }, []);
 
-  const nextReview = () => {
-    setCurrentReview((prev) => (publishedReviews.length === 0 ? 0 : (prev + 1) % publishedReviews.length));
-  };
-
-  const prevReview = () => {
-    setCurrentReview((prev) => (publishedReviews.length === 0 ? 0 : (prev - 1 + publishedReviews.length) % publishedReviews.length));
-  };
-
-  const activeReview = publishedReviews[currentReview];
+  const filmReviews = publishedReviews.length > 2
+    ? [...publishedReviews, ...publishedReviews]
+    : publishedReviews;
 
   // Variants for Framer Motion animations
   const fadeInUp = {
@@ -283,6 +273,34 @@ export default function Home() {
         </div>
       </section>
 
+      {publishedReviews.length > 0 && (
+        <section className={styles.filmStrip} aria-label="Client reviews">
+          <div className={styles.sprockets} aria-hidden="true" />
+          <div className={styles.filmViewport}>
+            <div
+              className={`${styles.filmTrack} ${publishedReviews.length > 2 ? styles.filmMoving : ''}`}
+              style={{ '--film-duration': `${Math.max(publishedReviews.length, 3) * 9}s` } as React.CSSProperties}
+            >
+              {filmReviews.map((review, index) => (
+                <article key={`${review.id}-${index}`} className={styles.filmFrame}>
+                  <div className={styles.filmStars} aria-label={`${review.rating} out of 5`}>
+                    {[...Array(review.rating)].map((_, star) => (
+                      <Star key={star} size={14} fill="var(--primary)" color="var(--primary)" />
+                    ))}
+                  </div>
+                  <p className={styles.filmQuote}>&ldquo;{review.body}&rdquo;</p>
+                  <div className={styles.filmPerson}>
+                    <strong>{review.name}</strong>
+                    <span>{[review.location, review.project].filter(Boolean).join(' · ')}</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+          <div className={styles.sprockets} aria-hidden="true" />
+        </section>
+      )}
+
       {/* Featured Services Preview Section */}
       <section className={styles.servicesSection}>
         <div className="container">
@@ -370,71 +388,6 @@ export default function Home() {
                 </div>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials Review Slider Section */}
-      <section className={styles.reviewsSection}>
-        <div className="container">
-          <div className={styles.reviewsWrapper}>
-            <div className={styles.reviewsLeft}>
-              <span className={styles.preTitle}>Client Testimonials</span>
-              <h2 className={styles.reviewsTitle}>Word On The Street</h2>
-              <p className={styles.reviewsSubtitle}>
-                Notes from homeowners across Sacramento County. Every review is read before it is published.
-              </p>
-              <div className={styles.sliderControls}>
-                {publishedReviews.length > 1 && (
-                  <>
-                    <button onClick={prevReview} className={styles.sliderBtn} aria-label="Previous review">
-                      <ChevronLeft size={20} />
-                    </button>
-                    <button onClick={nextReview} className={styles.sliderBtn} aria-label="Next review">
-                      <ChevronRight size={20} />
-                    </button>
-                  </>
-                )}
-                <Link href="/reviews/new" className="btn btn-primary">
-                  Leave a Review
-                </Link>
-              </div>
-            </div>
-
-            <div className={styles.reviewsRight}>
-              {activeReview ? (
-                <motion.div
-                  key={activeReview.id}
-                  initial={{ opacity: 0, x: 50 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.4 }}
-                  className={`${styles.reviewCard} glass`}
-                >
-                  <div className={styles.reviewHeader}>
-                    <div className={styles.stars}>
-                      {[...Array(activeReview.rating)].map((_, i) => (
-                        <Star key={i} size={18} fill="var(--primary)" color="var(--primary)" />
-                      ))}
-                    </div>
-                    {activeReview.project && <span className={styles.reviewProject}>{activeReview.project}</span>}
-                  </div>
-                  <p className={styles.reviewText}>
-                    &ldquo;{activeReview.body}&rdquo;
-                  </p>
-                  <div className={styles.reviewerInfo}>
-                    <h4 className={styles.reviewerName}>{activeReview.name}</h4>
-                    {activeReview.location && <p className={styles.reviewerLoc}>{activeReview.location}</p>}
-                  </div>
-                </motion.div>
-              ) : (
-                <div className={`${styles.reviewCard} glass`}>
-                  <p className={styles.reviewText}>Published reviews will appear here.</p>
-                  <Link href="/reviews" className={styles.serviceLink}>
-                    Open the review ribbon <ArrowRight size={16} />
-                  </Link>
-                </div>
-              )}
-            </div>
           </div>
         </div>
       </section>
